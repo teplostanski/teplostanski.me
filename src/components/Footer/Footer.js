@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <div className="footer">
       <div className="footer__container">
-        <div className="footer__col2">
+        <div className="footer__items">
           <FooterColumns
             heading="Карта Сайта"
             links={[
@@ -23,20 +23,28 @@ export default function Footer() {
             ]}
           />
         </div>
-        <div className="footer__col3">
+        <div className="footer__items">
           <FooterColumns
             heading="Контакты"
             links={[
             ]}
           />
         </div>
-        <div className="footer__col4">
+        <div className="footer__items footer__links">
           <FooterColumns
             heading="Ссылки"
             links={[
               {
                 title: 'Github',
                 path: 'https://github.com/r0bomurlok',
+              },
+              {
+                title: 'LinkedIn',
+                path: '#',
+              },
+              {
+                title: 'StackOverflow',
+                path: 'https://stackoverflow.com/users/21089931/r0bomurlok',
               },
             ]}
           />
