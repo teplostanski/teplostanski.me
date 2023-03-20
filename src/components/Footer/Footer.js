@@ -36,7 +36,7 @@ export default function Footer() {
             links={[
               {
                 title: 'Github',
-                path: 'https://github.com/r0bomurlok',
+                path: 'https://github.com/teplostanski',
               },
               {
                 title: 'LinkedIn',
@@ -44,7 +44,7 @@ export default function Footer() {
               },
               {
                 title: 'StackOverflow',
-                path: 'https://stackoverflow.com/users/21089931/r0bomurlok',
+                path: 'https://stackoverflow.com/users/21089931/teplostanski',
               },
             ]}
           />
