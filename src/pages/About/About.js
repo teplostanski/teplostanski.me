@@ -52,6 +52,7 @@ export default function About() {
       <div className="about__info__items">
         <div className="about__info__item">
           <h1 className="about__info__heading heading-color">Обучение</h1>
+          <AboutEduItem title="Стажировки" eduItems={['Birka.uk (2023)']} />
           <AboutEduItem
             title="Колледж"
             eduItems={[
