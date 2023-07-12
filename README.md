@@ -27,7 +27,7 @@
 
 This web app is a portfolio site and a mini movie search that opens after registration.
 
-![](./src/assets/images/movies.png)
+![](./assets/images/movies.png)
 
 \> [GitHub](https://github.com/teplostanski/movies-explorer-frontend)
 
@@ -38,7 +38,7 @@ This web app is a portfolio site and a mini movie search that opens after regist
 
 "Mesto" is a site where people share photos. A "place" can be anything: a city, a region, or a venue.
 
-![](./src/assets/images/mesto.png)
+![](./assets/images/mesto.png)
 
 \> [GitHub](https://github.com/teplostanski/react-mesto-auth) 
 
@@ -51,7 +51,7 @@ This web app is a portfolio site and a mini movie search that opens after regist
 
 A responsive web page "Travel across Russia" describing unusual places in Russia.
 
-![](./src/assets/images/travel.png)
+![](./assets/images/travel.png)
 
 \> [GitHub](https://github.com/teplostanski/travel) 
 
@@ -62,7 +62,7 @@ A responsive web page "Travel across Russia" describing unusual places in Russia
 
 A single-page site about modern and effective learning approaches.
 
-![](./src/assets/images/how-to-learn.png)
+![](./assets/images/how-to-learn.png)
 
 \> [GitHub](https://github.com/teplostanski/how-to-learn) 
 
@@ -76,7 +76,7 @@ A single-page site about modern and effective learning approaches.
 
 Pet project. Online markdown notes editor
 
-![](./src/assets/images/aned.png)
+![](./assets/images/aned.png)
 
 \> [GitHub](https://github.com/teplostanski/aned) 
 
@@ -89,7 +89,7 @@ Pet project. Online markdown notes editor
 
 This web app is a portfolio site and a mini movie search that opens after registration.
 
-![](./src/assets/images/portfolio.png)
+![](./assets/images/portfolio.png)
 
 \> [GitHub](https://github.com/teplostanski/portfolio) 
 
