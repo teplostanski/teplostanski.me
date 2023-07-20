@@ -1,7 +1,7 @@
 <div align="center">
   <h1>portfolio v2</h1>
 
-  <a href="https://teplostanski.dev">  <img src="https://img.shields.io/badge/-teplostanski.dev-fecc00?style=for-the-badge" alt="https://teplostanski.dev"></a>
+  <a href="https://teplostanski.dev">  <img src="https://img.shields.io/badge/-teplostanski.dev-fecc00?style=for-the-badge" alt="https://teplostanski.dev"><img src='https://img.shields.io/website?down_color=red&down_message=offline&label=&style=for-the-badge&up_color=%23238636&up_message=online&url=https%3A%2F%2Fteplostanski.dev'/> </a>
 
   <br/>
 
@@ -9,8 +9,6 @@
   <img src="https://img.shields.io/badge/-React-0d1117?style=for-the-badge&logo=React" alt="React">
   <img src="https://img.shields.io/badge/-Next.js-0d1117?style=for-the-badge&logo=Next.js" alt="Next.js">
   <img src="https://img.shields.io/badge/-SCSS-0d1117?style=for-the-badge&logo=SASS" alt="SCSS">
-  
-  <img src="https://img.shields.io/website?down_color=%23ff0000&down_message=offline&style=for-the-badge&up_color=green&up_message=online&url=https%3A%2F%2Fteplostanski.dev" alt="Website">
   <img src="https://img.shields.io/github/license/teplostanski/portfolio?style=for-the-badge" alt="license">
 
 </div>
@@ -21,6 +19,19 @@
 # Projects
 
 # [Long-term support projects are listed under "Pet projects"](#pet-projects)
+
+## TechnoCats Team blog
+> Stack: React Astro.js(SSR) CSS HTML FireBase
+
+A team project of 6 people building a blog site written in Astro 
+
+![](https://raw.githubusercontent.com/teplostanski/technocats-team-blog/main/src/assets/screenshot.png)
+
+\> [GitHub](https://github.com/teplostanski/technocats-team-blog) 
+
+\> [Website](https://technocats-team.teplostanski.dev/), [Mirror](https://technocats-team.netlify.app/)
+
+<br>
 
 ## Movies Explorer
 > Stack: HTML CSS React.js
