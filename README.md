@@ -18,7 +18,7 @@
 
 # Projects
 
-# [Long-term support projects are listed under "Pet projects"](#pet-projects)
+[Long-term support projects are listed under "Pet projects"](#pet-projects)
 
 ## Encryption machine
 > Stack: React MobX SCSS
