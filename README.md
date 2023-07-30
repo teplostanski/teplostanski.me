@@ -20,6 +20,18 @@
 
 # [Long-term support projects are listed under "Pet projects"](#pet-projects)
 
+## Encryption machine
+> Stack: React MobX SCSS
+
+Encryption machine is an online service for encrypting text messages.
+
+![](https://github.com/encryption-machine/Front/raw/master/src/assets/images/screenshot.png)
+
+\> [GitHub](https://github.com/encryption-machine/Front) 
+
+
+<br>
+
 ## TechnoCats Team blog
 > Stack: React Astro.js(SSR) CSS HTML FireBase
 
