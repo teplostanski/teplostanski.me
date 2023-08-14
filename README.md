@@ -20,6 +20,19 @@
 
 [Long-term support projects are listed under "Pet projects"](#pet-projects)
 
+## enot
+> Stack: TypeScript React.js CSS
+
+Pet project. Online markdown notes editor
+
+![](https://raw.githubusercontent.com/teplostanski/enot/main/assets/screen.png)
+
+\> [GitHub](https://github.com/teplostanski/enot) 
+
+\> [Website](https://enot.teplostanski.dev/)
+
+<br>
+
 ## Encryption machine
 > Stack: React MobX SCSS
 
@@ -94,16 +107,16 @@ A single-page site about modern and effective learning approaches.
 
 # Pet projects
 
-## aned
-> Stack: HTML CSS TypeScript React.js
+## enot
+> Stack: TypeScript React.js CSS
 
 Pet project. Online markdown notes editor
 
-![](./assets/images/aned.png)
+![](https://raw.githubusercontent.com/teplostanski/enot/main/assets/screen.png)
 
-\> [GitHub](https://github.com/teplostanski/aned) 
+\> [GitHub](https://github.com/teplostanski/enot) 
 
-\> [Website](https://aned.teplostanski.dev/)
+\> [Website](https://enot.teplostanski.dev/)
 
 <br>
 
