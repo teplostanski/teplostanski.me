@@ -5,11 +5,11 @@ export const links = {
   },
   issue: {
     label: 'issue',
-    link: 'https://github.com/teplostanski/teplostanski.dev/issues',
+    link: 'https://github.com/teplostanski/teplostan.ski/issues',
   },
   donate: {
     label: 'donate',
-    link: 'https://donate.teplostanski.dev',
+    link: 'https://donate.teplostan.ski',
   },
   moonbloom_theme: {
     label: '',
@@ -23,6 +23,6 @@ export const links = {
   telegram: { label: 'telegram', link: 'https://t.me/teplostanski' },
   bsky: {
     label: 'bsky',
-    link: 'https://bsky.app/profile/teplostanski.bsky.social',
+    link: 'https://bsky.app/profile/teplostan.ski',
   },
 } as const
