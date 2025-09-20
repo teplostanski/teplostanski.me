@@ -12,7 +12,7 @@ export const links = {
     link: 'https://donate.teplostan.ski',
   },
   moonbloom_theme: {
-    label: '',
+    label: 'Moonbloom Theme',
     link: 'https://github.com/moonbloom-theme',
   },
   email: {
