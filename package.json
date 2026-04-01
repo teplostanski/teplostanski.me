@@ -13,7 +13,7 @@
     "astro": "^5.17.3"
   },
   "devDependencies": {
-    "sass-embedded": "^1.93.2",
+    "sass-embedded": "^1.98.0",
     "vite-plugin-readable-classnames": "^1.5.7"
   }
 }
