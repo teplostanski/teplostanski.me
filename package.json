@@ -12,9 +12,9 @@
     "astro": "astro",
     "generate:og": "unrun scripts/generate-og.ts",
     "typecheck": "astro check",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "format": "dprint fmt",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --write src",
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
@@ -36,10 +36,11 @@
     "@typescript-eslint/parser": "^8.54.0",
     "@unocss/astro": "^66.6.0",
     "@unocss/eslint-plugin": "^66.6.0",
-    "dprint": "^0.49.1",
     "eslint": "^9.39.2",
     "eslint-plugin-astro": "^1.5.0",
     "lint-staged": "^16.2.7",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
     "satori": "^0.19.1",
     "simple-git-hooks": "^2.13.1",
     "typescript": "^5.9.3",
@@ -53,7 +54,7 @@
     "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx,json,md,astro}": [
+    "src/**/*.{ts,tsx,js,jsx,md,astro}": [
       "eslint --fix"
     ]
   }
