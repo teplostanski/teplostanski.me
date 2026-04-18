@@ -62,7 +62,7 @@ export const pageCopy: PageCopy = {
     en: {
       title: `${authorName.en} - ${authorTitleRole.en}`,
       description:
-        `${authorName.en} is an open-source enthusiast exploring front-end development. Creator of tsdown, Vue Macros, and Elk. Core team member of Vue, Vite, and more.`,
+        `${authorName.en} is an open-source enthusiast exploring front-end development.`,
       name: authorName.en,
       avatar: {
         avif: '/avatar.avif',
