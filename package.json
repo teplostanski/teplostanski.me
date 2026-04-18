@@ -6,6 +6,8 @@
     "node": "^24.0.0"
   },
   "scripts": {
+    "predev": "node scripts/sync-geist-fonts.mjs",
+    "prebuild": "node scripts/sync-geist-fonts.mjs",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
