@@ -1,0 +1,15 @@
+import { defineConfig, presetIcons, presetWebFonts, presetWind3 } from 'unocss'
+
+export default defineConfig({
+  presets: [
+    presetWind3(),
+    presetIcons(),
+    presetWebFonts({
+      fonts: {
+        sans: 'Outfit:300,400,500,600',
+        serif: [{ name: 'Newsreader', weights: [400, 500, 600, 700] }],
+        mono: 'JetBrains Mono:400',
+      },
+    }),
+  ],
+})

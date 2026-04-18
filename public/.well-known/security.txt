@@ -1,0 +1,4 @@
+Contact: mailto:igor@teplostanski.me
+Encryption: https://keys.openpgp.org/vks/v1/by-fingerprint/5628A324816DF3C202799215ABE46FF36CB6A99B
+Canonical: https://teplostanski.me/.well-known/security.txt
+Expires: 2027-02-09T00:00:00.000Z

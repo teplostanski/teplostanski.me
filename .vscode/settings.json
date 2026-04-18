@@ -1,0 +1,7 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "dprint.dprint",
+  "[json][javascript][typescript][markdown]": {
+    "editor.defaultFormatter": "dprint.dprint"
+  }
+}
