@@ -52,87 +52,99 @@ const hreflangLangs = languageKeys.filter(
 )
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang={lang} data-lang-prefixes={JSON.stringify(getAllLangPrefixes())}>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/favicon.ico" />
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <link rel='icon' href='/favicon.ico' />
     <title>{title}</title>
-    {description && <meta name="description" content={description} />}
-    <link rel="canonical" href={canonicalURL.href} />
+    {description && <meta name='description' content={description} />}
+    <link rel='canonical' href={canonicalURL.href} />
 
-    {hreflangLangs.map((l) => {
-      const href = new URL(
-        l === defaultLang ? basePath || '/' : `/${l}${basePath || '/'}`,
-        site,
-      ).href
-      return <link rel="alternate" hreflang={localeByLang[l]} href={href} />
-    })}
-    {hreflangLangs.length > 1 && (
-      <link
-        rel="alternate"
-        hreflang="x-default"
-        href={new URL(basePath || '/', site).href}
-      />
-    )}
+    {
+      hreflangLangs.map((l) => {
+        const href = new URL(
+          l === defaultLang ? basePath || '/' : `/${l}${basePath || '/'}`,
+          site,
+        ).href
+        return <link rel='alternate' hreflang={localeByLang[l]} href={href} />
+      })
+    }
+    {
+      hreflangLangs.length > 1 && (
+        <link
+          rel='alternate'
+          hreflang='x-default'
+          href={new URL(basePath || '/', site).href}
+        />
+      )
+    }
 
-    <meta property="og:title" content={title} />
-    {description && <meta property="og:description" content={description} />}
-    <meta property="og:url" content={canonicalURL.href} />
-    <meta property="og:site_name" content={pageCopy.home[lang].name} />
-    <meta property="og:type" content={ogType} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:locale" content={locale} />
-    {hreflangLangs
-      .filter((l) => l !== lang)
-      .map((l) => (
-        <meta property="og:locale:alternate" content={localeByLang[l]} />
-      ))}
-    {ogType === 'article' && publishedDate && (
-      <meta
-        property="article:published_time"
-        content={publishedDate.toISOString()}
-      />
-    )}
-    {ogType === 'article' && updatedDate && (
-      <meta
-        property="article:modified_time"
-        content={updatedDate.toISOString()}
-      />
-    )}
+    <meta property='og:title' content={title} />
+    {description && <meta property='og:description' content={description} />}
+    <meta property='og:url' content={canonicalURL.href} />
+    <meta property='og:site_name' content={pageCopy.home[lang].name} />
+    <meta property='og:type' content={ogType} />
+    <meta property='og:image' content={ogImage} />
+    <meta property='og:locale' content={locale} />
+    {
+      hreflangLangs
+        .filter((l) => l !== lang)
+        .map((l) => (
+          <meta property='og:locale:alternate' content={localeByLang[l]} />
+        ))
+    }
+    {
+      ogType === 'article' && publishedDate && (
+        <meta
+          property='article:published_time'
+          content={publishedDate.toISOString()}
+        />
+      )
+    }
+    {
+      ogType === 'article' && updatedDate && (
+        <meta
+          property='article:modified_time'
+          content={updatedDate.toISOString()}
+        />
+      )
+    }
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    {description && <meta name="twitter:description" content={description} />}
-    <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content={title} />
+    <meta name='twitter:card' content='summary_large_image' />
+    <meta name='twitter:title' content={title} />
+    {description && <meta name='twitter:description' content={description} />}
+    <meta name='twitter:image' content={ogImage} />
+    <meta name='twitter:image:alt' content={title} />
 
     <link
-      rel="alternate"
-      type="application/rss+xml"
+      rel='alternate'
+      type='application/rss+xml'
       title={pageCopy.home[lang].name}
       href={new URL(`${getUrlPrefix(lang)}/rss.xml`, site).href}
     />
 
-    <script is:inline type="module">
-    const stored = localStorage.getItem('theme')
-    const prefersDark = globalThis.matchMedia(
-      '(prefers-color-scheme: dark)',
-    ).matches
-    if (stored === 'dark' || (!stored && prefersDark)) {
-      document.documentElement.classList.add('dark')
-    }
+    <script is:inline type='module'>
+      const stored = localStorage.getItem('theme')
+      const prefersDark = globalThis.matchMedia(
+        '(prefers-color-scheme: dark)',
+      ).matches
+      if (stored === 'dark' || (!stored && prefersDark)) {
+        document.documentElement.classList.add('dark')
+      }
     </script>
 
     <ClientRouter />
-    <slot name="head" />
+    <slot name='head' />
   </head>
   <body
-    class="flex flex-col bg-stone-50 text-stone-800 font-sans antialiased min-h-dvh dark:bg-[#16171d] selection:bg-stone-900/10 dark:text-stone-200 dark:selection:bg-stone-100/10"
-    style="text-autospace: normal"
+    class='flex flex-col bg-stone-50 text-stone-800 font-sans antialiased min-h-dvh dark:bg-[#16171d] selection:bg-stone-900/10 dark:text-stone-200 dark:selection:bg-stone-100/10'
+    style='text-autospace: normal'
   >
-    <nav class="fade-in w-full flex items-center justify-between gap-4 px-4 py-5 md:px-12 sm:px-6">
+    <nav
+      class='fade-in w-full flex items-center justify-between gap-4 px-4 py-5 md:px-12 sm:px-6'
+    >
       <a
         href={translatePath('/')}
         class:list={[
@@ -140,45 +152,53 @@ const hreflangLangs = languageKeys.filter(
           pageCopy.home[lang].nameSerif && 'font-serif',
         ]}
       >
-        {pageCopy.home[lang].name}{basePath === '/' && (
-          <span
-            class="terminal-cursor ml-0.5 text-base font-mono"
-            aria-hidden="true"
-          >
-            _
-          </span>
-        )}
-      </a>
-      <div class="flex items-center gap-3 text-sm text-stone-500 font-500 md:gap-6 sm:gap-4 dark:text-stone-400">
-        {nav
-          .filter((item) => !item.langs || item.langs.includes(lang))
-          .map((item) => (
-            <a
-              href={translatePath(item.href)}
-              class:list={[
-                'transition-colors duration-200',
-                pathname.startsWith(translatePath(item.href))
-                  ? 'text-stone-800 dark:text-stone-200'
-                  : 'hover:text-stone-800 dark:hover:text-stone-200',
-              ]}
+        {pageCopy.home[lang].name}{
+          basePath === '/' && (
+            <span
+              class='terminal-cursor ml-0.5 text-base font-mono'
+              aria-hidden='true'
             >
-              {t(item.key)}
-            </a>
-          ))}
+              _
+            </span>
+          )
+        }
+      </a>
+      <div
+        class='flex items-center gap-3 text-sm text-stone-500 font-500 md:gap-6 sm:gap-4 dark:text-stone-400'
+      >
+        {
+          nav
+            .filter((item) => !item.langs || item.langs.includes(lang))
+            .map((item) => (
+              <a
+                href={translatePath(item.href)}
+                class:list={[
+                  'transition-colors duration-200',
+                  pathname.startsWith(translatePath(item.href))
+                    ? 'text-stone-800 dark:text-stone-200'
+                    : 'hover:text-stone-800 dark:hover:text-stone-200',
+                ]}
+              >
+                {t(item.key)}
+              </a>
+            ))
+        }
         <LanguageSwitcher availableLangs={availableLangs} />
         <a
           href={new URL(`${getUrlPrefix(lang)}/rss.xml`, site).href}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="RSS"
-          class="p-1 text-stone-500 transition-colors duration-200 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200"
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label='RSS'
+          class='p-1 text-stone-500 transition-colors duration-200 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200'
         >
           <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            class="h-3.5 w-3.5 fill-current"
+            viewBox='0 0 24 24'
+            aria-hidden='true'
+            class='h-3.5 w-3.5 fill-current'
           >
-            <path d="M3 17a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-3-9v4a13 13 0 0 1 13 13h4C17 15.402 8.598 7 0 7Zm0-7v4c11.598 0 21 9.402 21 21h4C25 12.193 13.807 1 0 1Z" />
+            <path
+              d='M3 17a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-3-9v4a13 13 0 0 1 13 13h4C17 15.402 8.598 7 0 7Zm0-7v4c11.598 0 21 9.402 21 21h4C25 12.193 13.807 1 0 1Z'
+            ></path>
           </svg>
         </a>
         <ThemeSwitcher />
@@ -187,303 +207,309 @@ const hreflangLangs = languageKeys.filter(
 
     <slot />
 
-    <footer class="fade-in w-full flex items-center justify-center gap-5 border-t border-stone-200/60 px-6 py-6 dark:border-stone-800/60 md:px-12">
-      {social.map((link) => (
-        <a
-          href={link.localeHref?.[lang] ?? link.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-stone-500 transition-colors duration-200 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-300"
-          aria-label={link.label}
-        >
-          <div class:list={[link.icon, 'w-5 h-5']} />
-        </a>
-      ))}
+    <footer
+      class='fade-in w-full flex items-center justify-center gap-5 border-t border-stone-200/60 px-6 py-6 dark:border-stone-800/60 md:px-12'
+    >
+      {
+        social.map((link) => (
+          <a
+            href={link.localeHref?.[lang] ?? link.href}
+            target='_blank'
+            rel='noopener noreferrer'
+            class='text-stone-500 transition-colors duration-200 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-300'
+            aria-label={link.label}
+          >
+            <div class:list={[link.icon, 'w-5 h-5']} />
+          </a>
+        ))
+      }
     </footer>
   </body>
 </html>
 
 <script>
-const langPrefixes: string[] = JSON.parse(
-  document.documentElement.dataset.langPrefixes!,
-)
-function normalizePath(path: string) {
-  return path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path
-}
-function stripLangPrefix(path: string) {
-  const normalized = normalizePath(path)
-  for (const prefix of langPrefixes) {
-    if (!prefix) continue
-    if (normalized.startsWith(prefix)) {
-      return normalized.slice(prefix.length)
+  const langPrefixes: string[] = JSON.parse(
+    document.documentElement.dataset.langPrefixes!,
+  )
+  function normalizePath(path: string) {
+    return path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path
+  }
+  function stripLangPrefix(path: string) {
+    const normalized = normalizePath(path)
+    for (const prefix of langPrefixes) {
+      if (!prefix) continue
+      if (normalized.startsWith(prefix)) {
+        return normalized.slice(prefix.length)
+      }
     }
+    return normalized
   }
-  return normalized
-}
-function isPostsIndex(path: string) {
-  return stripLangPrefix(path) === '/posts'
-}
-function isPostsDetail(path: string) {
-  const stripped = stripLangPrefix(path)
-  return stripped.startsWith('/posts/') && stripped !== '/posts'
-}
-function isListToDetail(fromPath: string, toPath: string) {
-  return isPostsIndex(fromPath) && isPostsDetail(toPath)
-}
-function isDetailToList(fromPath: string, toPath: string) {
-  return isPostsDetail(fromPath) && isPostsIndex(toPath)
-}
+  function isPostsIndex(path: string) {
+    return stripLangPrefix(path) === '/posts'
+  }
+  function isPostsDetail(path: string) {
+    const stripped = stripLangPrefix(path)
+    return stripped.startsWith('/posts/') && stripped !== '/posts'
+  }
+  function isListToDetail(fromPath: string, toPath: string) {
+    return isPostsIndex(fromPath) && isPostsDetail(toPath)
+  }
+  function isDetailToList(fromPath: string, toPath: string) {
+    return isPostsDetail(fromPath) && isPostsIndex(toPath)
+  }
 
-document.addEventListener('astro:before-swap', (event) => {
-  const { from, to, newDocument } = event
+  document.addEventListener('astro:before-swap', (event) => {
+    const { from, to, newDocument } = event
 
-  if (isListToDetail(from.pathname, to.pathname)) {
-    newDocument.documentElement.dataset.disableTitleEntryAnimation = 'true'
-  }
-  if (isDetailToList(from.pathname, to.pathname)) {
-    newDocument.documentElement.dataset.disableListEntryAnimation = 'true'
-  }
-})
+    if (isListToDetail(from.pathname, to.pathname)) {
+      newDocument.documentElement.dataset.disableTitleEntryAnimation = 'true'
+    }
+    if (isDetailToList(from.pathname, to.pathname)) {
+      newDocument.documentElement.dataset.disableListEntryAnimation = 'true'
+    }
+  })
 </script>
 
 <style is:global>
-@font-face {
-  font-family: 'Geist';
-  src: url('/fonts/geist/Geist-Variable.woff2') format('woff2');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Geist Mono';
-  src: url('/fonts/geist/GeistMono-Variable.woff2') format('woff2');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+  @font-face {
+    font-family: 'Geist';
+    src: url('/fonts/geist/Geist-Variable.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
   }
-  to {
-    opacity: 1;
+
+  @font-face {
+    font-family: 'Geist Mono';
+    src: url('/fonts/geist/GeistMono-Variable.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
   }
-}
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-}
 
-.fade-in {
-  animation: fadeIn 0.5s ease-out both;
-}
+  .fade-in {
+    animation: fadeIn 0.5s ease-out both;
+  }
 
-.fade-in-up {
-  animation: fadeInUp 0.5s ease-out both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .fade-in,
   .fade-in-up {
-    animation: none;
+    animation: fadeInUp 0.5s ease-out both;
   }
-}
 
-html[data-disable-title-entry-animation="true"] .detail-title {
-  animation: none !important;
-  opacity: 1 !important;
-  transform: none !important;
-}
-
-html[data-disable-list-entry-animation="true"] .fade-in-up {
-  animation: none !important;
-  opacity: 1 !important;
-  transform: none !important;
-}
-
-@keyframes cursorBlink {
-  0%,
-  100% {
-    opacity: 1;
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in,
+    .fade-in-up {
+      animation: none;
+    }
   }
-  50% {
-    opacity: 0;
+
+  html[data-disable-title-entry-animation='true'] .detail-title {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
-}
 
-.terminal-cursor {
-  animation: cursorBlink 1s step-end infinite;
-  color: inherit;
-}
-
-:root {
-  view-transition-name: root;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  :root {
-    view-transition-name: none !important;
+  html[data-disable-list-entry-animation='true'] .fade-in-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
-}
 
-@keyframes themeFadeOut {
-  from {
-    opacity: 1;
+  @keyframes cursorBlink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
   }
-  to {
-    opacity: 0;
-  }
-}
 
-@keyframes themeFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-  mix-blend-mode: normal;
-}
-
-::view-transition-old(root) {
-  animation: themeFadeOut 220ms ease both;
-}
-
-::view-transition-new(root) {
-  animation: themeFadeIn 220ms ease both;
-}
-
-html {
-  scroll-padding-top: 5rem;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
   .terminal-cursor {
-    animation: none;
-    display: none;
+    animation: cursorBlink 1s step-end infinite;
+    color: inherit;
   }
-}
+
+  :root {
+    view-transition-name: root;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      view-transition-name: none !important;
+    }
+  }
+
+  @keyframes themeFadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes themeFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    mix-blend-mode: normal;
+  }
+
+  ::view-transition-old(root) {
+    animation: themeFadeOut 220ms ease both;
+  }
+
+  ::view-transition-new(root) {
+    animation: themeFadeIn 220ms ease both;
+  }
+
+  html {
+    scroll-padding-top: 5rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .terminal-cursor {
+      animation: none;
+      display: none;
+    }
+  }
 </style>
 
 <!-- NProgress -->
 <script>
-import NProgress from 'nprogress'
-import { initToc } from '../scripts/toc'
+  import NProgress from 'nprogress'
+  import { initToc } from '../scripts/toc'
 
-NProgress.configure({
-  showSpinner: false,
-  trickleSpeed: 120,
-  minimum: 0.08,
-})
+  NProgress.configure({
+    showSpinner: false,
+    trickleSpeed: 120,
+    minimum: 0.08,
+  })
 
-let nprogressTimer: ReturnType<typeof globalThis.setTimeout> | undefined
-function startProgress() {
-  if (nprogressTimer) return
-  nprogressTimer = globalThis.setTimeout(() => {
-    NProgress.start()
-  }, 120)
-}
-function stopProgress() {
-  if (nprogressTimer != null) {
-    clearTimeout(nprogressTimer)
-    nprogressTimer = undefined
+  let nprogressTimer: ReturnType<typeof globalThis.setTimeout> | undefined
+  function startProgress() {
+    if (nprogressTimer) return
+    nprogressTimer = globalThis.setTimeout(() => {
+      NProgress.start()
+    }, 120)
   }
-  NProgress.done(true)
-}
+  function stopProgress() {
+    if (nprogressTimer != null) {
+      clearTimeout(nprogressTimer)
+      nprogressTimer = undefined
+    }
+    NProgress.done(true)
+  }
 
-document.addEventListener('astro:before-preparation', startProgress)
-document.addEventListener('astro:after-swap', stopProgress)
-document.addEventListener('astro:page-load', stopProgress)
-document.addEventListener('astro:page-load', initToc)
+  document.addEventListener('astro:before-preparation', startProgress)
+  document.addEventListener('astro:after-swap', stopProgress)
+  document.addEventListener('astro:page-load', stopProgress)
+  document.addEventListener('astro:page-load', initToc)
 </script>
 <style is:global>
-:root {
-  --nprogress-color: rgba(28, 25, 23, 0.45);
-}
-
-.dark {
-  --nprogress-color: rgba(231, 229, 228, 0.5);
-}
-
-#nprogress {
-  pointer-events: none;
-}
-
-#nprogress .bar {
-  background: var(--nprogress-color);
-  position: fixed;
-  z-index: 1031;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-}
-
-#nprogress .peg {
-  display: block;
-  position: absolute;
-  right: 0;
-  width: 100px;
-  height: 100%;
-  box-shadow: 0 0 6px var(--nprogress-color), 0 0 3px var(--nprogress-color);
-  opacity: 1;
-  transform: rotate(3deg) translate(0, -4px);
-}
-
-#nprogress .spinner {
-  display: block;
-  position: fixed;
-  z-index: 1031;
-  top: 15px;
-  right: 15px;
-}
-
-#nprogress .spinner-icon {
-  width: 18px;
-  height: 18px;
-  box-sizing: border-box;
-  border: solid 2px transparent;
-  border-top-color: var(--nprogress-color);
-  border-left-color: var(--nprogress-color);
-  border-radius: 50%;
-  animation: nprogress-spinner 400ms linear infinite;
-}
-
-.nprogress-custom-parent {
-  overflow: hidden;
-  position: relative;
-}
-
-.nprogress-custom-parent #nprogress .spinner,
-.nprogress-custom-parent #nprogress .bar {
-  position: absolute;
-}
-
-@keyframes nprogress-spinner {
-  0% {
-    transform: rotate(0deg);
+  :root {
+    --nprogress-color: rgba(28, 25, 23, 0.45);
   }
-  100% {
-    transform: rotate(360deg);
+
+  .dark {
+    --nprogress-color: rgba(231, 229, 228, 0.5);
   }
-}
+
+  #nprogress {
+    pointer-events: none;
+  }
+
+  #nprogress .bar {
+    background: var(--nprogress-color);
+    position: fixed;
+    z-index: 1031;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+  }
+
+  #nprogress .peg {
+    display: block;
+    position: absolute;
+    right: 0;
+    width: 100px;
+    height: 100%;
+    box-shadow:
+      0 0 6px var(--nprogress-color),
+      0 0 3px var(--nprogress-color);
+    opacity: 1;
+    transform: rotate(3deg) translate(0, -4px);
+  }
+
+  #nprogress .spinner {
+    display: block;
+    position: fixed;
+    z-index: 1031;
+    top: 15px;
+    right: 15px;
+  }
+
+  #nprogress .spinner-icon {
+    width: 18px;
+    height: 18px;
+    box-sizing: border-box;
+    border: solid 2px transparent;
+    border-top-color: var(--nprogress-color);
+    border-left-color: var(--nprogress-color);
+    border-radius: 50%;
+    animation: nprogress-spinner 400ms linear infinite;
+  }
+
+  .nprogress-custom-parent {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .nprogress-custom-parent #nprogress .spinner,
+  .nprogress-custom-parent #nprogress .bar {
+    position: absolute;
+  }
+
+  @keyframes nprogress-spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 </style>
