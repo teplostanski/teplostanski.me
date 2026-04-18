@@ -129,7 +129,7 @@ const hreflangLangs = languageKeys.filter(
     <slot name="head" />
   </head>
   <body
-    class="flex flex-col bg-stone-50 text-stone-800 antialiased min-h-dvh dark:bg-[#16171d] selection:bg-stone-900/10 dark:text-stone-200 dark:selection:bg-stone-100/10"
+    class="flex flex-col bg-stone-50 text-stone-800 font-sans antialiased min-h-dvh dark:bg-[#16171d] selection:bg-stone-900/10 dark:text-stone-200 dark:selection:bg-stone-100/10"
     style="text-autospace: normal"
   >
     <nav class="fade-in w-full flex items-center justify-between gap-4 px-4 py-5 md:px-12 sm:px-6">
@@ -173,7 +173,13 @@ const hreflangLangs = languageKeys.filter(
           aria-label="RSS"
           class="p-1 text-stone-500 transition-colors duration-200 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200"
         >
-          <div class="i-simple-icons-rss h-3.5 w-3.5"></div>
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            class="h-3.5 w-3.5 fill-current"
+          >
+            <path d="M3 17a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-3-9v4a13 13 0 0 1 13 13h4C17 15.402 8.598 7 0 7Zm0-7v4c11.598 0 21 9.402 21 21h4C25 12.193 13.807 1 0 1Z" />
+          </svg>
         </a>
         <ThemeSwitcher />
       </div>
@@ -241,6 +247,22 @@ document.addEventListener('astro:before-swap', (event) => {
 </script>
 
 <style is:global>
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/geist/Geist-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/geist/GeistMono-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
