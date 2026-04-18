@@ -1,15 +1,16 @@
-import { defineConfig, presetIcons, presetWebFonts, presetWind3 } from 'unocss'
+import { defineConfig, presetIcons, presetWind3 } from 'unocss'
 
 export default defineConfig({
+  safelist: ['i-simple-icons-rss'],
   presets: [
     presetWind3(),
     presetIcons(),
-    presetWebFonts({
-      fonts: {
-        sans: 'Outfit:300,400,500,600',
-        serif: [{ name: 'Newsreader', weights: [400, 500, 600, 700] }],
-        mono: 'JetBrains Mono:400',
-      },
-    }),
   ],
+  theme: {
+    fontFamily: {
+      sans: 'Geist, system-ui, sans-serif',
+      serif: 'Geist, system-ui, sans-serif',
+      mono: '"Geist Mono", ui-monospace, SFMono-Regular, monospace',
+    },
+  },
 })

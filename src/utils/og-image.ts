@@ -1,5 +1,4 @@
-import { Buffer } from 'node:buffer'
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import process from 'node:process'
 import { Resvg } from '@resvg/resvg-js'
@@ -7,6 +6,7 @@ import satori, { type Font } from 'satori'
 import { siteCopy, siteMeta } from '../data/site'
 import { ui } from '../i18n/ui'
 import { getLocaleFromLang, type Lang } from '../i18n/utils'
+import type { Buffer } from 'node:buffer'
 
 interface OgOptions {
   title: string
@@ -16,63 +16,35 @@ interface OgOptions {
 }
 
 interface FontSource extends Pick<Font, 'name' | 'weight' | 'style' | 'lang'> {
-  filename: string
-  url: string
+  path: string
 }
 
 const root = process.cwd()
-const cacheDir = join(root, 'node_modules/.cache/fonts')
 
 const FONT_SOURCES: FontSource[] = [
   {
-    name: 'Outfit',
+    name: 'Geist',
     weight: 400,
     style: 'normal',
-    filename: 'Outfit-Regular.ttf',
-    url:
-      'https://raw.githubusercontent.com/Outfitio/Outfit-Fonts/main/fonts/ttf/Outfit-Regular.ttf',
+    path: join(root, 'node_modules/geist/dist/fonts/geist-sans/Geist-Regular.ttf'),
   },
   {
-    name: 'Outfit',
+    name: 'Geist',
     weight: 600,
     style: 'normal',
-    filename: 'Outfit-SemiBold.ttf',
-    url:
-      'https://raw.githubusercontent.com/Outfitio/Outfit-Fonts/main/fonts/ttf/Outfit-SemiBold.ttf',
-  },
-  {
-    name: 'Noto Sans',
-    weight: 700,
-    style: 'normal',
-    filename: 'NotoSans-Bold.ttf',
-    url:
-      'https://raw.githubusercontent.com/notofonts/noto-fonts/main/hinted/ttf/NotoSans/NotoSans-Bold.ttf',
-  },
-  {
-    name: 'Noto Sans',
-    weight: 400,
-    style: 'normal',
-    filename: 'NotoSans-Regular.ttf',
-    url:
-      'https://raw.githubusercontent.com/notofonts/noto-fonts/main/hinted/ttf/NotoSans/NotoSans-Regular.ttf',
+    path: join(root, 'node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf'),
   },
 ]
 
-let fontsPromise: Promise<Font[]> | undefined
+let fontsCache: Font[] | undefined
 let avatarDataUrl: string | undefined
 
-async function ensureFonts() {
-  mkdirSync(cacheDir, { recursive: true })
+function ensureFonts() {
   const fonts: Font[] = []
   for (const source of FONT_SOURCES) {
-    const path = join(cacheDir, source.filename)
-    if (!existsSync(path)) {
-      const res = await fetch(source.url)
-      if (!res.ok) {
-        throw new Error(`Failed to download font: ${source.url}`)
-      }
-      writeFileSync(path, Buffer.from(await res.arrayBuffer()))
-    }
+    const path = source.path
+    if (!existsSync(path))
+      throw new Error(`Font file was not found: ${path}`)
     fonts.push({
       name: source.name,
       data: readFileSync(path),
@@ -84,10 +56,10 @@ async function ensureFonts() {
 }
 
 function getFonts() {
-  if (!fontsPromise) {
-    fontsPromise = ensureFonts()
+  if (!fontsCache) {
+    fontsCache = ensureFonts()
   }
-  return fontsPromise
+  return fontsCache
 }
 
 function getAvatarDataUrl() {
@@ -105,7 +77,7 @@ export async function renderOgImage({
   lang,
   date,
 }: OgOptions): Promise<Buffer> {
-  const fonts = await getFonts()
+  const fonts = getFonts()
   const locale = getLocaleFromLang(lang)
   const isEn = lang === 'en'
   const label = (ui[lang] ?? ui.en)['nav.posts']
@@ -131,7 +103,7 @@ export async function renderOgImage({
           padding: 64,
           gap: 24,
           background: 'linear-gradient(135deg, #fafaf9 0%, #e7e5e4 100%)',
-          fontFamily: 'Noto Sans',
+          fontFamily: 'Geist, Noto Sans',
         },
         children: [
           {
@@ -280,7 +252,7 @@ export async function renderOgImage({
 }
 
 export async function renderDefaultOgImage(): Promise<Buffer> {
-  const fonts = await getFonts()
+  const fonts = getFonts()
 
   const svg = await satori(
     {
@@ -294,7 +266,7 @@ export async function renderDefaultOgImage(): Promise<Buffer> {
           justifyContent: 'center',
           alignItems: 'center',
           background: 'linear-gradient(135deg, #fafaf9 0%, #e7e5e4 100%)',
-          fontFamily: 'Outfit, Noto Sans',
+          fontFamily: 'Geist, Noto Sans',
         },
         children: [
           {

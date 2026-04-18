@@ -14,7 +14,7 @@ if (styleProp) {
   const trimmed = styleProp.trim()
   styleParts.push(trimmed.endsWith(';') ? trimmed : `${trimmed};`)
 }
-styleParts.push(`--prose-heading-font: 'Newsreader', serif;`)
+styleParts.push(`--prose-heading-font: 'Geist', sans-serif;`)
 const mergedStyle = styleParts.join(' ')
 ---
 
@@ -48,7 +48,7 @@ const mergedStyle = styleParts.join(' ')
 }
 
 .prose h2 {
-  font-family: var(--prose-heading-font, "Newsreader", serif);
+  font-family: var(--prose-heading-font, "Geist", sans-serif);
   font-weight: 700;
   font-size: 1.5rem;
   color: var(--prose-heading);
@@ -58,7 +58,7 @@ const mergedStyle = styleParts.join(' ')
 }
 
 .prose h3 {
-  font-family: var(--prose-heading-font, "Newsreader", serif);
+  font-family: var(--prose-heading-font, "Geist", sans-serif);
   font-weight: 600;
   font-size: 1.2rem;
   color: var(--prose-heading);
@@ -114,7 +114,7 @@ const mergedStyle = styleParts.join(' ')
 }
 
 .prose code {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Geist Mono", monospace;
   font-size: 0.875em;
   background: var(--prose-bg-code);
   padding: 0.15em 0.35em;
