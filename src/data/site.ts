@@ -28,6 +28,10 @@ export const siteCopy = {
       en: 'Igor Teplostanski',
       ru: 'Игорь Теплостанский',
     },
+    firstName: {
+      en: 'Igor',
+      ru: 'Игорь',
+    },
     tagline: {
       en: 'Open-source enthusiast',
       ru: 'Frontend-разработчик',
@@ -63,6 +67,7 @@ export const siteCopy = {
     canonicalName: string;
     alternateName: string;
     displayName: Localized<string>;
+    firstName: Localized<string>;
     tagline: Localized<string>;
     titleRole: Localized<string>;
     sameAs: Localized<readonly string[]>;

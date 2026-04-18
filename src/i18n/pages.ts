@@ -100,7 +100,7 @@ export const pageCopy: PageCopy = {
         `About ${authorName.en}, an open-source enthusiast exploring front-end development.`,
       heading: 'About',
       paragraphs: [
-        `Hi, I'm ${authorName.en}. An open-source enthusiast exploring front-end development.`,
+        `Hi, I'm ${siteCopy.author.firstName.en}. An open-source enthusiast exploring front-end development.`,
         //'Creator of repattern, settime.ru, twoip',
       ],
     },
@@ -109,7 +109,7 @@ export const pageCopy: PageCopy = {
       description: `О ${authorName.ru}, frontend-разработчике и авторе open-source проектов.`,
       heading: 'Обо мне',
       paragraphs: [
-        `Привет, я ${authorName.ru}. Frontend-разработчик и автор open-source проектов.`,
+        `Привет, я ${siteCopy.author.firstName.ru}. Frontend-разработчик и автор open-source проектов.`,
         //'Автор проектов repattern, settime.ru, twoip',
       ],
     },
