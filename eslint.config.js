@@ -6,6 +6,7 @@ export default sxzz({
   vue: true,
   astro: true,
   prettier: false,
+  ignores: ['.pnpm-store/**', 'node_modules/**', 'dist/**', '.astro/**'],
   baseline: {
     ignoreFeatures: ['top-level-await'],
   },
