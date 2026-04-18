@@ -38,6 +38,7 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 const translatePath = useTranslatedPath(lang)
 const basePath = getPathWithoutLang(pathname)
+const isHomeRoute = pathname === '/' || pathname === '/ru' || pathname === '/ru/'
 const languageKeys = Object.keys(languages) as (keyof typeof languages)[]
 
 const site = Astro.site!
@@ -143,7 +144,10 @@ const hreflangLangs = languageKeys.filter(
     style='text-autospace: normal'
   >
     <nav
-      class='fade-in w-full flex items-center justify-between gap-4 px-4 py-5 md:px-12 sm:px-6'
+      class:list={[
+        'fade-in w-full flex items-center justify-between gap-4 px-4 py-5 md:px-12 sm:px-6',
+        isHomeRoute && 'max-[520px]:justify-end',
+      ]}
     >
       <a
         href={translatePath('/')}
@@ -163,19 +167,23 @@ const hreflangLangs = languageKeys.filter(
           )
         }
       </a>
-      <a
-        href={translatePath('/')}
-        aria-label={pageCopy.home[lang].name}
-        class='hidden h-10 w-10 items-center justify-center overflow-hidden rounded-full ring-1 ring-stone-300/70 max-[520px]:flex dark:ring-stone-700/70'
-      >
-        <img
-          src='/avatar.jpg'
-          alt={pageCopy.home[lang].name}
-          class='h-full w-full object-cover'
-          loading='eager'
-          decoding='async'
-        />
-      </a>
+      {
+        !isHomeRoute && (
+          <a
+            href={translatePath('/')}
+            aria-label={pageCopy.home[lang].name}
+            class='hidden h-10 w-10 items-center justify-center overflow-hidden rounded-full ring-1 ring-stone-300/70 max-[520px]:flex dark:ring-stone-700/70'
+          >
+            <img
+              src='/avatar.jpg'
+              alt={pageCopy.home[lang].name}
+              class='h-full w-full object-cover'
+              loading='eager'
+              decoding='async'
+            />
+          </a>
+        )
+      }
       <div
         class='flex items-center gap-3 text-sm text-stone-500 font-500 md:gap-6 sm:gap-4 dark:text-stone-400'
       >
