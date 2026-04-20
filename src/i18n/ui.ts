@@ -45,7 +45,7 @@ export const nav: ReadonlyArray<{
   href: string;
   langs?: readonly string[];
 }> = [
-  { key: 'nav.posts', href: '/posts/' },
+  //{ key: 'nav.posts', href: '/posts/' },
   { key: 'nav.about', href: '/about/' },
 ];
 
