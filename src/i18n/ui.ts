@@ -1,10 +1,10 @@
 export const languages = {
   en: 'English',
   ru: 'Русский',
-} as const;
+} as const
 
-export const defaultLang = 'en';
-export const showDefaultLang = false;
+export const defaultLang = 'en'
+export const showDefaultLang = false
 
 export const ui = {
   en: {
@@ -33,28 +33,28 @@ export const ui = {
     'notFound.description': 'Страница, которую вы ищете, не существует.',
     'notFound.backHome': 'На главную',
   },
-} as const;
+} as const
 
 export const localeByLang = {
   en: 'en-US',
   ru: 'ru-RU',
-} as const;
+} as const
 
 export const nav: ReadonlyArray<{
-  key: keyof (typeof ui)[keyof typeof ui];
-  href: string;
-  langs?: readonly string[];
+  key: keyof (typeof ui)[keyof typeof ui]
+  href: string
+  langs?: readonly string[]
 }> = [
   //{ key: 'nav.posts', href: '/posts/' },
   { key: 'nav.about', href: '/about/' },
-];
+]
 
 /* @unocss-include */
 export const social: ReadonlyArray<{
-  icon: string;
-  href: string;
-  label: string;
-  localeHref?: Partial<Record<string, string>>;
+  icon: string
+  href: string
+  label: string
+  localeHref?: Partial<Record<string, string>>
 }> = [
   {
     icon: 'i-simple-icons-github',
@@ -71,4 +71,4 @@ export const social: ReadonlyArray<{
     href: 'https://keys.openpgp.org/search?q=C4339B5E84224FB8B77DD3D5F0ED43D371910F09',
     label: 'GPG C4339B5E84224FB8B77DD3D5F0ED43D371910F09',
   },
-];
+]

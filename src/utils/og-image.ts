@@ -26,13 +26,19 @@ const FONT_SOURCES: FontSource[] = [
     name: 'Geist',
     weight: 400,
     style: 'normal',
-    path: join(root, 'node_modules/geist/dist/fonts/geist-sans/Geist-Regular.ttf'),
+    path: join(
+      root,
+      'node_modules/geist/dist/fonts/geist-sans/Geist-Regular.ttf',
+    ),
   },
   {
     name: 'Geist',
     weight: 600,
     style: 'normal',
-    path: join(root, 'node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf'),
+    path: join(
+      root,
+      'node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf',
+    ),
   },
 ]
 
@@ -43,8 +49,7 @@ function ensureFonts() {
   const fonts: Font[] = []
   for (const source of FONT_SOURCES) {
     const path = source.path
-    if (!existsSync(path))
-      throw new Error(`Font file was not found: ${path}`)
+    if (!existsSync(path)) throw new Error(`Font file was not found: ${path}`)
     fonts.push({
       name: source.name,
       data: readFileSync(path),
@@ -83,10 +88,10 @@ export async function renderOgImage({
   const label = (ui[lang] ?? ui.en)['nav.posts']
   const dateText = date
     ? date.toLocaleDateString(locale, {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    })
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      })
     : ''
   const author = siteCopy.author.displayName[lang]
 

@@ -61,8 +61,7 @@ export const pageCopy: PageCopy = {
   home: {
     en: {
       title: `${authorName.en} - ${authorTitleRole.en}`,
-      description:
-        `${authorName.en} is an open-source enthusiast exploring front-end development.`,
+      description: `${authorName.en} is an open-source enthusiast exploring front-end development.`,
       name: authorName.en,
       avatar: {
         avif: '/avatar.avif',
@@ -77,8 +76,7 @@ export const pageCopy: PageCopy = {
     },
     ru: {
       title: `${authorName.ru} - ${authorTitleRole.ru}`,
-      description:
-        `${authorName.ru} — frontend-разработчик и автор open-source проектов.`,
+      description: `${authorName.ru} — frontend-разработчик и автор open-source проектов.`,
       name: authorName.ru,
       avatar: {
         avif: '/avatar-ru.avif',
@@ -96,8 +94,7 @@ export const pageCopy: PageCopy = {
   about: {
     en: {
       title: `About - ${authorName.en}`,
-      description:
-        `About ${authorName.en}, an open-source enthusiast exploring front-end development.`,
+      description: `About ${authorName.en}, an open-source enthusiast exploring front-end development.`,
       heading: 'About',
       paragraphs: [
         `Hi, I'm ${siteCopy.author.firstName.en}. An open-source enthusiast exploring front-end development.`,
@@ -156,8 +153,8 @@ export function getPageCopy<K extends keyof typeof pageCopy>(
   key: K,
   lang: Lang,
 ): (typeof pageCopy)[K][typeof defaultLang] {
-  return (pageCopy[key][lang]
-    ?? pageCopy[key][defaultLang]) as (typeof pageCopy)[K][typeof defaultLang]
+  return (pageCopy[key][lang] ??
+    pageCopy[key][defaultLang]) as (typeof pageCopy)[K][typeof defaultLang]
 }
 
 export function getRssOptions(
