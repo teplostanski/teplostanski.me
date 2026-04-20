@@ -1,14 +1,14 @@
-import type { Lang } from '../i18n/utils';
+import type { Lang } from '../i18n/utils'
 
-type Localized<T> = Record<Lang, T>;
-export type LocalizedString = string | Localized<string>;
+type Localized<T> = Record<Lang, T>
+export type LocalizedString = string | Localized<string>
 
 interface AuthorSchema {
-  '@type': 'Person';
-  name: string;
-  url: string;
-  alternateName?: string;
-  sameAs?: readonly string[];
+  '@type': 'Person'
+  name: string
+  url: string
+  alternateName?: string
+  sameAs?: readonly string[]
 }
 
 export const siteMeta = {
@@ -18,7 +18,7 @@ export const siteMeta = {
   //  domain: 'teplostanski.me',
   //  scriptSrc: 'https://analytics.teplostanski.me/js/script.js',
   //},
-} as const;
+} as const
 
 export const siteCopy = {
   author: {
@@ -64,47 +64,47 @@ export const siteCopy = {
   },
 } as const satisfies {
   author: {
-    canonicalName: string;
-    alternateName: string;
-    displayName: Localized<string>;
-    firstName: Localized<string>;
-    tagline: Localized<string>;
-    titleRole: Localized<string>;
-    sameAs: Localized<readonly string[]>;
-  };
-  rss: Localized<{ title: string; description: string }>;
-};
+    canonicalName: string
+    alternateName: string
+    displayName: Localized<string>
+    firstName: Localized<string>
+    tagline: Localized<string>
+    titleRole: Localized<string>
+    sameAs: Localized<readonly string[]>
+  }
+  rss: Localized<{ title: string; description: string }>
+}
 
 export function getAuthorSchema(
   lang: Lang,
   options: { includeAlternate?: boolean; includeSameAs?: boolean } = {},
 ): AuthorSchema {
-  const includeAlternate = options.includeAlternate ?? lang === 'ru';
+  const includeAlternate = options.includeAlternate ?? lang === 'ru'
   const schema: AuthorSchema = {
     '@type': 'Person',
     name: siteCopy.author.canonicalName,
     url: siteMeta.url,
     ...(includeAlternate && { alternateName: siteCopy.author.alternateName }),
     ...(options.includeSameAs && { sameAs: siteCopy.author.sameAs[lang] }),
-  };
-  return schema;
+  }
+  return schema
 }
 
 interface Link {
-  name: string;
-  href: string;
+  name: string
+  href: string
 }
 
 export interface Friend {
-  name: LocalizedString;
-  bio: LocalizedString;
-  avatar: LocalizedString;
-  href: LocalizedString;
+  name: LocalizedString
+  bio: LocalizedString
+  avatar: LocalizedString
+  href: LocalizedString
 }
 
 interface HomeLinks {
-  creator: Link[];
-  links: Link[];
+  creator: Link[]
+  links: Link[]
 }
 
 export const homeLinks: HomeLinks = {
@@ -119,4 +119,4 @@ export const homeLinks: HomeLinks = {
     { name: 'Telegram', href: 'https://t.me/teplostanski' },
     { name: 'Codepen', href: 'https://codepen.io/teplostanski' },
   ],
-};
+}
