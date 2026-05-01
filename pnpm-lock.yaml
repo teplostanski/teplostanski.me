@@ -58,8 +58,8 @@ importers:
         specifier: ^8.54.0
         version: 8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       '@unocss/astro':
-        specifier: ^66.6.0
-        version: 66.6.0(vite@8.0.0-beta.12(@types/node@25.2.0)(esbuild@0.27.7)(jiti@2.6.1)(yaml@2.8.2))
+        specifier: ^66.6.8
+        version: 66.6.8(vite@8.0.0-beta.12(@types/node@25.2.0)(esbuild@0.27.7)(jiti@2.6.1)(yaml@2.8.2))
       '@unocss/eslint-plugin':
         specifier: ^66.6.0
         version: 66.6.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
@@ -1173,6 +1173,14 @@ packages:
       vite:
         optional: true
 
+  '@unocss/astro@66.6.8':
+    resolution: {integrity: sha512-yOc7UzCVxr+tVlcCeiT7eguVsFMeGc+sNk6eqO8sPYsFaDt3IL0FFlfTSHE8jSvpWMe0bBuHU35nLsjn8BgO5w==}
+    peerDependencies:
+      vite: ^8.0.0-beta.11
+    peerDependenciesMeta:
+      vite:
+        optional: true
+
   '@unocss/cli@66.6.0':
     resolution: {integrity: sha512-wtA6YBIvW2f8FISdYS8rx+B3ZGTUjw3YO3Fxz1ApUCHinYSdz8SoNWShH1I61LWbcjJ4hbjI/D9t/Dmgp6vmiQ==}
     engines: {node: '>=14'}
@@ -1182,8 +1190,15 @@ packages:
     resolution: {integrity: sha512-YvNk/b9jGmT1TQGDbHR+0VALnTsPLzSTzw90t09ggny9YxeF0XnsP06M5+H0EJPwpmdigBC++KEIMaK8SYDsaQ==}
     engines: {node: '>=14'}
 
+  '@unocss/config@66.6.8':
+    resolution: {integrity: sha512-f+a8OyhD7ZoK8Pa1b3Cbx1RQc3n5x+Qht/cHg3wh/g4DNQIjBI2EqwSLfBigWhdO96zIqFAdyTlO3onmrJwUOw==}
+    engines: {node: '>=14'}
+
   '@unocss/core@66.6.0':
     resolution: {integrity: sha512-Sxm7HmhsPIIzxbPnWembPyobuCeA5j9KxL+jIOW2c+kZiTFjHeju7vuVWX9jmAMMC+UyDuuCQ4yE+kBo3Y7SWQ==}
+
+  '@unocss/core@66.6.8':
+    resolution: {integrity: sha512-P9IlQfgms+8/nka7fBhiiWU4SPwrTNKbTdK0z1SLnttXMHHjsB2zpG+Vi1JQDpICfY9Y1/2pWtguPE+zeOVu9Q==}
 
   '@unocss/eslint-plugin@66.6.0':
     resolution: {integrity: sha512-6i+kNVVGb5I+XOCUgLDHol6sxb28ahbJrmLL/eiAWflT850MUqtAlFeyHDYHzScnOFcPy1AcmeY0yM77GgERmg==}
@@ -1194,6 +1209,9 @@ packages:
 
   '@unocss/inspector@66.6.0':
     resolution: {integrity: sha512-BvdY8ah+OTmzFMb+z8RZkaF15+PWRFt9S2bOARkkRBubybX9EE1rxM07l74kO5Dj16++CS4nO15XFq39pPoBvg==}
+
+  '@unocss/inspector@66.6.8':
+    resolution: {integrity: sha512-g8uRzXDdmoNRjXX/mZP7m0rWXLtOimyOW7+VFK6FNxRWBmvIGYgTLHkutF6Wyh9lLPDYx3pkkEmfgL35BDT3Sg==}
 
   '@unocss/postcss@66.6.0':
     resolution: {integrity: sha512-Tn8l8JMXJcTgzrPHSukpRBnVIt561bQCUle7jW8NXk61vYBy8p52nEBkNy5QMXybaCih5ghg2d/+nDIAl9YIpw==}
@@ -1234,8 +1252,15 @@ packages:
   '@unocss/reset@66.6.0':
     resolution: {integrity: sha512-OQK5F7Dzx0wWDSPTYEz7NRP9pekufSAkjxfKOyKokiXOUzVTg8Yx8sOvCsA3Oi0Rx5WlsO2LN+MOBekpkrttXg==}
 
+  '@unocss/reset@66.6.8':
+    resolution: {integrity: sha512-H+YP3ltizUiPO9FzFgFhv8WGsefO7fTgT1If1/9ritPDqZlvzTqMmjelhcq8D8MGoQ1RQBUvtkZ5HJoKVY0Tgw==}
+
   '@unocss/rule-utils@66.6.0':
     resolution: {integrity: sha512-v16l6p5VrefDx8P/gzWnp0p6/hCA0vZ4UMUN6SxHGVE6V+IBpX6I6Du3Egk9TdkhZ7o+Pe1NHxksHcjT0V/tww==}
+    engines: {node: '>=14'}
+
+  '@unocss/rule-utils@66.6.8':
+    resolution: {integrity: sha512-WR35L07mLP6PElD4hlUHo5KbQ48uz2HT/XCuJyAsHP+15Gv6539hPWA5SresPuva9r8rl+PeGIgMSIKf4A5Ihw==}
     engines: {node: '>=14'}
 
   '@unocss/transformer-attributify-jsx@66.6.0':
@@ -1252,6 +1277,11 @@ packages:
 
   '@unocss/vite@66.6.0':
     resolution: {integrity: sha512-SC0/rX0xSjdu8Jaj98XztHOuvXHWDVk0YaHKRAQks2Oj3yyqAOrhzhDUH0zzFaQWf5bsKVYK40H+h4rMk9vm5Q==}
+    peerDependencies:
+      vite: ^8.0.0-beta.11
+
+  '@unocss/vite@66.6.8':
+    resolution: {integrity: sha512-bXfEnEHdW7zTGLIYU16MsfKSFy3Q47Pevhrt5f9fOGzC4UI1JGkkoQSfoFpXZGliDrhoSFK4Msz9Jt43Ta4j+w==}
     peerDependencies:
       vite: ^8.0.0-beta.11
 
@@ -1375,6 +1405,11 @@ packages:
     resolution: {integrity: sha512-3XSA2cR/h/73EzlXXdU6YNycmYI7+kicTxks4eJg2g39biHR84slg2+des+p7iHYhbRg/udIS4TD53WabcOUkw==}
     engines: {node: '>= 0.4'}
 
+  baseline-browser-mapping@2.10.24:
+    resolution: {integrity: sha512-I2NkZOOrj2XuguvWCK6OVh9GavsNjZjK908Rq3mIBK25+GD8vPX5w2WdxVqnQ7xx3SrZJiCiZFu+/Oz50oSYSA==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
   baseline-browser-mapping@2.9.19:
     resolution: {integrity: sha512-ipDqC8FrAl/76p2SSWKSI+H9tFwm7vYqXQrItCuiVPt26Km0jS+NzSsBWAaBusvSbQcfJG+JitdMm+wZAgTYqg==}
     hasBin: true
@@ -1414,6 +1449,9 @@ packages:
 
   caniuse-lite@1.0.30001767:
     resolution: {integrity: sha512-34+zUAMhSH+r+9eKmYG+k2Rpt8XttfE4yXAjoZvkAPs15xcYQhyBYdalJ65BzivAvGRMViEjy6oKr/S91loekQ==}
+
+  caniuse-lite@1.0.30001791:
+    resolution: {integrity: sha512-yk0l/YSrOnFZk3UROpDLQD9+kC1l4meK/wed583AXrzoarMGJcbRi2Q4RaUYbKxYAsZ8sWmaSa/DsLmdBeI1vQ==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -1590,6 +1628,9 @@ packages:
 
   defu@6.1.4:
     resolution: {integrity: sha512-mEQCMmwJu317oSz8CwdIOdwf3xMif1ttiM8LTufzc3g6kR+9Pe236twL8j3IYT1F7GfRgGcW6MWxzZjLIkuHIg==}
+
+  defu@6.1.7:
+    resolution: {integrity: sha512-7z22QmUWiQ/2d0KkdYmANbRUVABpZ9SNYyH5vx6PZ+nE5bcC0l7uFvEfHlyld/HcGBFTL536ClDt3DEcSlEJAQ==}
 
   dequal@2.0.3:
     resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
@@ -2582,6 +2623,11 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  nanoid@3.3.12:
+    resolution: {integrity: sha512-ZB9RH/39qpq5Vu6Y+NmUaFhQR6pp+M2Xt76XBnEwDaGcVAqhlvxrl3B2bKS5D3NH3QR76v3aSrKaF/Kiy7lEtQ==}
+    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
+    hasBin: true
+
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
@@ -2740,6 +2786,10 @@ packages:
 
   picomatch@4.0.3:
     resolution: {integrity: sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==}
+    engines: {node: '>=12'}
+
+  picomatch@4.0.4:
+    resolution: {integrity: sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==}
     engines: {node: '>=12'}
 
   pidtree@0.6.0:
@@ -3144,6 +3194,10 @@ packages:
     resolution: {integrity: sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ==}
     engines: {node: '>=12.0.0'}
 
+  tinyglobby@0.2.16:
+    resolution: {integrity: sha512-pn99VhoACYR8nFHhxqix+uvsbXineAasWm5ojXoN8xEwK5Kd3/TrhNn1wByuD52UxWRLy8pu+kRMniEi6Eq9Zg==}
+    engines: {node: '>=12.0.0'}
+
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
@@ -3217,8 +3271,14 @@ packages:
   unconfig-core@7.4.2:
     resolution: {integrity: sha512-VgPCvLWugINbXvMQDf8Jh0mlbvNjNC6eSUziHsBCMpxR05OPrNrvDnyatdMjRgcHaaNsCqz+wjNXxNw1kRLHUg==}
 
+  unconfig-core@7.5.0:
+    resolution: {integrity: sha512-Su3FauozOGP44ZmKdHy2oE6LPjk51M/TRRjHv2HNCWiDvfvCoxC2lno6jevMA91MYAdCdwP05QnWdWpSbncX/w==}
+
   unconfig@7.4.2:
     resolution: {integrity: sha512-nrMlWRQ1xdTjSnSUqvYqJzbTBFugoqHobQj58B2bc8qxHKBBHMNNsWQFP3Cd3/JZK907voM2geYPWqD4VK3MPQ==}
+
+  unconfig@7.5.0:
+    resolution: {integrity: sha512-oi8Qy2JV4D3UQ0PsopR28CzdQ3S/5A1zwsUwp/rosSbfhJ5z7b90bIyTwi/F7hCLD4SGcZVjDzd4XoUQcEanvA==}
 
   uncrypto@0.1.3:
     resolution: {integrity: sha512-Ql87qFHB3s/De2ClA9e0gsnS6zXG27SkTiSJwjCc9MebbfapQfuPzumMIUMi38ezPZVNFcHI9sUIepeQfw8J8Q==}
@@ -4581,6 +4641,14 @@ snapshots:
     optionalDependencies:
       vite: 8.0.0-beta.12(@types/node@25.2.0)(esbuild@0.27.7)(jiti@2.6.1)(yaml@2.8.2)
 
+  '@unocss/astro@66.6.8(vite@8.0.0-beta.12(@types/node@25.2.0)(esbuild@0.27.7)(jiti@2.6.1)(yaml@2.8.2))':
+    dependencies:
+      '@unocss/core': 66.6.8
+      '@unocss/reset': 66.6.8
+      '@unocss/vite': 66.6.8(vite@8.0.0-beta.12(@types/node@25.2.0)(esbuild@0.27.7)(jiti@2.6.1)(yaml@2.8.2))
+    optionalDependencies:
+      vite: 8.0.0-beta.12(@types/node@25.2.0)(esbuild@0.27.7)(jiti@2.6.1)(yaml@2.8.2)
+
   '@unocss/cli@66.6.0':
     dependencies:
       '@jridgewell/remapping': 2.3.5
@@ -4604,7 +4672,16 @@ snapshots:
       '@unocss/core': 66.6.0
       unconfig: 7.4.2
 
+  '@unocss/config@66.6.8':
+    dependencies:
+      '@unocss/core': 66.6.8
+      colorette: 2.0.20
+      consola: 3.4.2
+      unconfig: 7.5.0
+
   '@unocss/core@66.6.0': {}
+
+  '@unocss/core@66.6.8': {}
 
   '@unocss/eslint-plugin@66.6.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)':
     dependencies:
@@ -4631,6 +4708,14 @@ snapshots:
       gzip-size: 6.0.0
       sirv: 3.0.2
       vue-flow-layout: 0.2.0
+
+  '@unocss/inspector@66.6.8':
+    dependencies:
+      '@unocss/core': 66.6.8
+      '@unocss/rule-utils': 66.6.8
+      colorette: 2.0.20
+      gzip-size: 6.0.0
+      sirv: 3.0.2
 
   '@unocss/postcss@66.6.0(postcss@8.5.6)':
     dependencies:
@@ -4695,9 +4780,16 @@ snapshots:
 
   '@unocss/reset@66.6.0': {}
 
+  '@unocss/reset@66.6.8': {}
+
   '@unocss/rule-utils@66.6.0':
     dependencies:
-      '@unocss/core': 66.6.0
+      '@unocss/core': 66.6.8
+      magic-string: 0.30.21
+
+  '@unocss/rule-utils@66.6.8':
+    dependencies:
+      '@unocss/core': 66.6.8
       magic-string: 0.30.21
 
   '@unocss/transformer-attributify-jsx@66.6.0':
@@ -4732,6 +4824,19 @@ snapshots:
       magic-string: 0.30.21
       pathe: 2.0.3
       tinyglobby: 0.2.15
+      unplugin-utils: 0.3.1
+      vite: 8.0.0-beta.12(@types/node@25.2.0)(esbuild@0.27.7)(jiti@2.6.1)(yaml@2.8.2)
+
+  '@unocss/vite@66.6.8(vite@8.0.0-beta.12(@types/node@25.2.0)(esbuild@0.27.7)(jiti@2.6.1)(yaml@2.8.2))':
+    dependencies:
+      '@jridgewell/remapping': 2.3.5
+      '@unocss/config': 66.6.8
+      '@unocss/core': 66.6.8
+      '@unocss/inspector': 66.6.8
+      chokidar: 5.0.0
+      magic-string: 0.30.21
+      pathe: 2.0.3
+      tinyglobby: 0.2.16
       unplugin-utils: 0.3.1
       vite: 8.0.0-beta.12(@types/node@25.2.0)(esbuild@0.27.7)(jiti@2.6.1)(yaml@2.8.2)
 
@@ -4960,6 +5065,8 @@ snapshots:
 
   base64-js@0.0.8: {}
 
+  baseline-browser-mapping@2.10.24: {}
+
   baseline-browser-mapping@2.9.19: {}
 
   boolbase@1.0.0: {}
@@ -4994,6 +5101,8 @@ snapshots:
   camelize@1.0.1: {}
 
   caniuse-lite@1.0.30001767: {}
+
+  caniuse-lite@1.0.30001791: {}
 
   ccount@2.0.1: {}
 
@@ -5140,6 +5249,8 @@ snapshots:
   deep-is@0.1.4: {}
 
   defu@6.1.4: {}
+
+  defu@6.1.7: {}
 
   dequal@2.0.3: {}
 
@@ -5623,6 +5734,10 @@ snapshots:
   fdir@6.5.0(picomatch@4.0.3):
     optionalDependencies:
       picomatch: 4.0.3
+
+  fdir@6.5.0(picomatch@4.0.4):
+    optionalDependencies:
+      picomatch: 4.0.4
 
   fflate@0.7.4: {}
 
@@ -6385,6 +6500,8 @@ snapshots:
 
   nanoid@3.3.11: {}
 
+  nanoid@3.3.12: {}
+
   natural-compare@1.4.0: {}
 
   natural-orderby@5.0.0: {}
@@ -6395,8 +6512,8 @@ snapshots:
     dependencies:
       '@next/env': 16.2.4
       '@swc/helpers': 0.5.15
-      baseline-browser-mapping: 2.9.19
-      caniuse-lite: 1.0.30001767
+      baseline-browser-mapping: 2.10.24
+      caniuse-lite: 1.0.30001791
       postcss: 8.4.31
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
@@ -6537,6 +6654,8 @@ snapshots:
 
   picomatch@4.0.3: {}
 
+  picomatch@4.0.4: {}
+
   pidtree@0.6.0: {}
 
   pkg-types@1.3.1:
@@ -6566,7 +6685,7 @@ snapshots:
 
   postcss@8.4.31:
     dependencies:
-      nanoid: 3.3.11
+      nanoid: 3.3.12
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
@@ -7017,6 +7136,11 @@ snapshots:
       fdir: 6.5.0(picomatch@4.0.3)
       picomatch: 4.0.3
 
+  tinyglobby@0.2.16:
+    dependencies:
+      fdir: 6.5.0(picomatch@4.0.4)
+      picomatch: 4.0.4
+
   to-regex-range@5.0.1:
     dependencies:
       is-number: 7.0.0
@@ -7079,6 +7203,11 @@ snapshots:
       '@quansync/fs': 1.0.0
       quansync: 1.0.0
 
+  unconfig-core@7.5.0:
+    dependencies:
+      '@quansync/fs': 1.0.0
+      quansync: 1.0.0
+
   unconfig@7.4.2:
     dependencies:
       '@quansync/fs': 1.0.0
@@ -7086,6 +7215,14 @@ snapshots:
       jiti: 2.6.1
       quansync: 1.0.0
       unconfig-core: 7.4.2
+
+  unconfig@7.5.0:
+    dependencies:
+      '@quansync/fs': 1.0.0
+      defu: 6.1.7
+      jiti: 2.6.1
+      quansync: 1.0.0
+      unconfig-core: 7.5.0
 
   uncrypto@0.1.3: {}
 
@@ -7184,7 +7321,7 @@ snapshots:
   unplugin-utils@0.3.1:
     dependencies:
       pathe: 2.0.3
-      picomatch: 4.0.3
+      picomatch: 4.0.4
 
   unrun@0.2.26(synckit@0.11.12):
     dependencies:
