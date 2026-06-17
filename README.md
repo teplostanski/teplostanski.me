@@ -20,11 +20,6 @@
   <br>
   <br>
 
-  <a href="https://astro.build" target="_blank">
-    <img src="https://astro.badg.es/v2/built-with-astro/tiny.svg" alt="Built with Astro" />
-  </a>
+  [![Donate](https://img.shields.io/static/v1?label=donate&message=teplostanski.me&color=4F46E5)](https://thanks.teplostanski.me)
 
-  <a href="https://thanks.teplostanski.me" target="_blank">
-    <img src="https://src.teplostanski.me/support-me.svg" alt="Support Me ❤" />
-  </a>
 </div>
