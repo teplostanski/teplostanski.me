@@ -20,6 +20,6 @@
   <br>
   <br>
 
-  [![Donate](https://img.shields.io/static/v1?label=donate&message=teplostanski.me&color=4F46E5)](https://thanks.teplostanski.me)
+  [![Thanks](https://img.shields.io/static/v1?label=thanks&message=teplostanski.me&color=4F46E5)](https://thanks.teplostanski.me)
 
 </div>
