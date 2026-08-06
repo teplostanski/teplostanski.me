@@ -24,7 +24,7 @@
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.2",
     "@unocss/reset": "^66.6.0",
-    "astro": "^6.1.7",
+    "astro": "^7.1.6",
     "geist": "^1.7.0",
     "nprogress": "^0.2.0",
     "rehype-external-links": "^3.0.0",
