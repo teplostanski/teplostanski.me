@@ -1,7 +1,7 @@
-import { getCollection, type CollectionEntry } from 'astro:content'
-import { renderOgImage } from '../../../../utils/og-image'
-import type { Lang } from '../../../../i18n/utils'
+import { type CollectionEntry, getCollection } from 'astro:content'
 import type { APIRoute } from 'astro'
+import type { Lang } from '../../../../i18n/utils'
+import { renderOgImage } from '../../../../utils/og-image'
 
 export const prerender = true
 

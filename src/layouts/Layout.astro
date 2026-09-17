@@ -38,7 +38,8 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 const translatePath = useTranslatedPath(lang)
 const basePath = getPathWithoutLang(pathname)
-const isHomeRoute = pathname === '/' || pathname === '/ru' || pathname === '/ru/'
+const isHomeRoute =
+  pathname === '/' || pathname === '/ru' || pathname === '/ru/'
 const languageKeys = Object.keys(languages) as (keyof typeof languages)[]
 
 const site = Astro.site!

@@ -1,7 +1,7 @@
+import type { RSSOptions } from '@astrojs/rss'
 import { siteCopy, siteMeta } from '../data/site'
 import { defaultLang } from './ui'
 import { getUrlPrefix, type Lang } from './utils'
-import type { RSSOptions } from '@astrojs/rss'
 
 interface HomeCopy {
   title: string

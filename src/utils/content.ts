@@ -1,4 +1,4 @@
-import { getCollection, type CollectionEntry } from 'astro:content'
+import { type CollectionEntry, getCollection } from 'astro:content'
 import { languages } from '../i18n/ui'
 import { getLocaleFromLang, type Lang } from '../i18n/utils'
 

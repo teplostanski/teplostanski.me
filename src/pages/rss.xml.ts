@@ -1,8 +1,8 @@
-import rss, { type RSSFeedItem } from '@astrojs/rss'
 import { getCollection } from 'astro:content'
+import rss, { type RSSFeedItem } from '@astrojs/rss'
+import type { APIContext } from 'astro'
 import { getRssOptions } from '../i18n/pages'
 import { defaultLang } from '../i18n/ui'
-import type { APIContext } from 'astro'
 
 export async function GET(context: APIContext) {
   const posts = (await getCollection('posts'))

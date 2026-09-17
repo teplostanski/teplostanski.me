@@ -1,7 +1,7 @@
 {
   "type": "module",
   "version": "v6",
-  "packageManager": "pnpm@10.28.2",
+  "packageManager": "pnpm@12.4.2",
   "engines": {
     "node": "^24.0.0"
   },
@@ -15,10 +15,9 @@
     "generate:og": "unrun scripts/generate-og.ts",
     "postinstall": "node scripts/sync-geist-fonts.mjs",
     "typecheck": "astro check",
-    "lint": "eslint src",
-    "lint:fix": "eslint src --fix",
-    "format": "prettier --write src",
-    "prepare": "simple-git-hooks"
+    "lint": "biome check --write .",
+    "format": "biome format --write .",
+    "check": "biome check ."
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.18",
@@ -26,40 +25,26 @@
     "@unocss/reset": "^66.6.0",
     "astro": "^6.1.7",
     "geist": "^1.7.0",
+    "goat-counter": "^0.1.1",
     "nprogress": "^0.2.0",
     "rehype-external-links": "^3.0.0",
     "remark-github-blockquote-alert": "^2.0.1"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
+    "@biomejs/biome": "^2.5.14",
     "@iconify-json/simple-icons": "^1.2.69",
     "@resvg/resvg-js": "^2.6.2",
-    "@sxzz/eslint-config": "^7.6.0",
     "@types/node": "^25.2.0",
     "@types/nprogress": "^0.2.3",
-    "@typescript-eslint/parser": "^8.54.0",
     "@unocss/astro": "^66.6.0",
-    "@unocss/eslint-plugin": "^66.6.0",
-    "eslint": "^9.39.2",
-    "eslint-plugin-astro": "^1.5.0",
-    "lint-staged": "^16.2.7",
-    "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "satori": "^0.19.1",
-    "simple-git-hooks": "^2.13.1",
     "typescript": "^5.9.3",
     "unocss": "^66.6.0",
     "unrun": "^0.2.26"
   },
   "resolutions": {
     "vite": "^8.0.0-beta.11"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
-  },
-  "lint-staged": {
-    "src/**/*.{ts,tsx,js,jsx,md,astro}": [
-      "eslint --fix"
-    ]
   }
 }

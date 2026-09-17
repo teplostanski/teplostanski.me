@@ -1,3 +1,4 @@
+import type { Buffer } from 'node:buffer'
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import process from 'node:process'
@@ -6,7 +7,6 @@ import satori, { type Font } from 'satori'
 import { siteCopy, siteMeta } from '../data/site'
 import { ui } from '../i18n/ui'
 import { getLocaleFromLang, type Lang } from '../i18n/utils'
-import type { Buffer } from 'node:buffer'
 
 interface OgOptions {
   title: string

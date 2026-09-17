@@ -4,11 +4,7 @@ interface Props {
   style?: string
 }
 
-const {
-  class: className,
-  style: styleProp,
-  ...rest
-} = Astro.props
+const { class: className, style: styleProp, ...rest } = Astro.props
 const styleParts: string[] = []
 if (styleProp) {
   const trimmed = styleProp.trim()

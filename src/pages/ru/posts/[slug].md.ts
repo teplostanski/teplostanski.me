@@ -1,6 +1,6 @@
 import { getCollection } from 'astro:content'
-import { getPostSlug } from '../../../utils/content'
 import type { APIRoute } from 'astro'
+import { getPostSlug } from '../../../utils/content'
 
 export const prerender = true
 

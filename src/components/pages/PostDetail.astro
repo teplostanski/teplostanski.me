@@ -1,11 +1,11 @@
 ---
-import { render, type CollectionEntry } from 'astro:content'
+import { type CollectionEntry, render } from 'astro:content'
 import { getAuthorSchema } from '../../data/site'
 import { getPageCopy } from '../../i18n/pages'
 import {
   getLocaleFromLang,
-  useTranslatedPath,
   type Lang,
+  useTranslatedPath,
 } from '../../i18n/utils'
 import Layout from '../../layouts/Layout.astro'
 import {
@@ -31,12 +31,10 @@ const ogImage = post.data.image ?? getPostOgImagePath(post.id)
 const author = getAuthorSchema(lang)
 const mdUrl = new URL(`${Astro.url.pathname.replace(/\/$/, '')}.md`, Astro.site)
 const getPostTitleTransitionName = (slug: string, currentLang: Lang) =>
-  `post-title-${currentLang}-${
-    slug
-      .toLowerCase()
-      .replaceAll(/[^a-z0-9_-]+/g, '-')
-      .replaceAll(/^-+|-+$/g, '')
-  }`
+  `post-title-${currentLang}-${slug
+    .toLowerCase()
+    .replaceAll(/[^a-z0-9_-]+/g, '-')
+    .replaceAll(/^-+|-+$/g, '')}`
 const postSlug = getPostSlug(post.id)
 const titleTransitionName = getPostTitleTransitionName(postSlug, lang)
 const schema = {
