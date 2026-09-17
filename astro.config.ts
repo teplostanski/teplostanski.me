@@ -13,6 +13,13 @@ export default defineConfig({
   integrations: [
     UnoCSS(),
     sitemap(),
+    goatCounterIntegration({
+      endpoint: 'https://stats.teplostanski.me/count',
+      allowLocal: true, // для dev-режима
+      params: {
+        path: (p) => location.host + p,
+      },
+    }),
   ],
   markdown: {
     remarkPlugins: [remarkGithubBlockquoteAlert],
