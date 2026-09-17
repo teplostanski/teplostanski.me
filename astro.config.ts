@@ -17,7 +17,7 @@ export default defineConfig({
       endpoint: 'https://stats.teplostanski.me/count',
       allowLocal: true, // для dev-режима
       params: {
-        path: (p) => location.host + p,
+        path: (p) => (p.startsWith('/') ? p : `/${p}`),
       },
     }),
   ],
