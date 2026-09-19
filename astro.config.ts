@@ -14,7 +14,7 @@ export default defineConfig({
     UnoCSS(),
     sitemap(),
     goatCounterIntegration({
-      endpoint: 'https://stats.teplostanski.me/count?site=teplostanski',
+      endpoint: 'https://stats.teplostanski.me/count',
       allowLocal: import.meta.env.DEV,
       autoPageviews: true,
     }),
