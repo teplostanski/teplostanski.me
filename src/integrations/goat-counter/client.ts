@@ -35,4 +35,5 @@ export function setupGoatCounter(config: ResolvedGoatCounterOptions) {
   }
 
   console.info('[astro-goat-counter] Initialized:', config.endpoint)
+  console.info('hi!!')
 }
