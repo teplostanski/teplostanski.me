@@ -1,0 +1,45 @@
+.main {
+  composes: fade-in-up from global;
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+}
+.code {
+  font: 700 6rem / 1 var(--font-sans);
+  color: #e7e5e4;
+}
+:global(.dark) .code {
+  color: #292524;
+}
+.description {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: var(--body-copy);
+}
+.homeLink {
+  margin-top: 2rem;
+  border-radius: 0.5rem;
+  background: #292524;
+  padding: 0.625rem 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: #fff;
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+}
+.homeLink:hover {
+  background: #44403c;
+}
+:global(.dark) .homeLink {
+  background: #e7e5e4;
+  color: #1c1917;
+}
+:global(.dark) .homeLink:hover {
+  background: #d6d3d1;
+}

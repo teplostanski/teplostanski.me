@@ -1,0 +1,137 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  background: #fafaf9;
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100dvh;
+}
+:global(.dark) .body {
+  background: #16171d;
+}
+.body ::selection {
+  background: rgb(28 25 23 / 0.1);
+}
+:global(.dark) .body ::selection {
+  background: rgb(245 245 244 / 0.1);
+}
+.nav {
+  composes: fade-in from global;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1rem;
+  min-height: 80px;
+}
+.brand {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.025em;
+  transition: color 0.2s;
+}
+.brand:hover {
+  color: var(--muted);
+}
+.cursor {
+  composes: terminal-cursor from global;
+  margin-left: 0.125rem;
+  font: 1rem / 1.5rem var(--font-mono);
+}
+.avatarLink {
+  display: none;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgb(214 211 209 / 0.7);
+}
+:global(.dark) .avatarLink {
+  box-shadow: 0 0 0 1px rgb(68 64 60 / 0.7);
+}
+.avatar {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.navLink {
+  transition: color 0.2s;
+}
+.activeLink {
+  color: var(--text);
+}
+.inactiveLink:hover {
+  color: var(--link-hover);
+}
+.footer {
+  composes: fade-in from global;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  border-top: 1px solid rgb(231 229 228 / 0.6);
+  padding: 1.5rem;
+}
+:global(.dark) .footer {
+  border-color: rgb(41 37 36 / 0.6);
+}
+.socialLink {
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.socialLink:hover {
+  color: #44403c;
+}
+:global(.dark) .socialLink:hover {
+  color: #d6d3d1;
+}
+.socialIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+@media (max-width: 520px) {
+  .homeNav {
+    justify-content: flex-end;
+  }
+  .brand {
+    display: none;
+  }
+  .avatarLink {
+    display: flex;
+  }
+}
+@media (min-width: 640px) {
+  .nav {
+    padding-inline: 1.5rem;
+  }
+  .controls {
+    gap: 1rem;
+  }
+}
+@media (min-width: 768px) {
+  .nav,
+  .footer {
+    padding-inline: 3rem;
+  }
+  .controls {
+    gap: 1.5rem;
+  }
+}

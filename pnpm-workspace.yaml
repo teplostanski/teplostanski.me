@@ -2,4 +2,5 @@ allowBuilds:
   esbuild: false
   sharp: false
   workerd: false
-  simple-git-hooks: false
+minimumReleaseAgeExclude:
+  - goat-counter@0.2.0

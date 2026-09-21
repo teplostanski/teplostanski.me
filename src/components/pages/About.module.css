@@ -1,0 +1,56 @@
+.main {
+  display: flex;
+  flex: 1 1 0%;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-inline: 3rem;
+  }
+}
+.content {
+  width: 100%;
+  max-width: 36rem;
+}
+.content > * + * {
+  margin-top: 2.5rem;
+}
+.heading {
+  font: 700 1.875rem / 2.25rem var(--font-sans);
+  letter-spacing: -0.025em;
+  color: var(--heading);
+}
+@media (min-width: 768px) {
+  .heading {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+.header {
+  composes: fade-in-up from global;
+}
+.paragraphs {
+  composes: fade-in-up from global;
+  color: var(--body-copy);
+  line-height: 1.625;
+}
+.paragraphs > * + * {
+  margin-top: 1rem;
+}
+.footer {
+  composes: fade-in-up from global;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #a8a29e;
+}
+:global(.dark) .footer {
+  color: #57534e;
+}
+.commitLink {
+  font-family: var(--font-mono);
+}
+.commitLink:hover {
+  text-decoration: underline;
+}

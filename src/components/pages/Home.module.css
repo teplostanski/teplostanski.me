@@ -1,0 +1,127 @@
+.content {
+  width: 100%;
+  max-width: 36rem;
+}
+.content > * + * {
+  margin-top: 2.5rem;
+}
+
+.main {
+  display: flex;
+  flex: 1 1 0%;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+.header {
+  composes: fade-in-up from global;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.picture {
+  display: flex;
+}
+.avatar {
+  width: 5rem;
+  height: 5rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow:
+    0 0 0 2px rgb(231 229 228 / 0.8),
+    0 10px 15px -3px rgb(168 162 158 / 0.1),
+    0 4px 6px -4px rgb(168 162 158 / 0.1);
+}
+:global(.dark) .avatar {
+  box-shadow:
+    0 0 0 2px rgb(68 64 60 / 0.5),
+    0 10px 15px -3px rgb(0 0 0 / 0.2),
+    0 4px 6px -4px rgb(0 0 0 / 0.2);
+}
+.name {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  color: var(--heading);
+}
+.serif {
+  font-family: var(--font-sans);
+}
+.tagline {
+  margin-top: 0.375rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+.sections > * + * {
+  margin-top: 2rem;
+}
+.section {
+  composes: fade-in-up from global;
+}
+.sectionHeading {
+  margin-bottom: 0.75rem;
+  font: 0.75rem / 1rem var(--font-mono);
+  color: var(--muted);
+  letter-spacing: 0.025em;
+}
+.prompt {
+  user-select: none;
+  color: rgb(5 150 105 / 0.7);
+}
+:global(.dark) .prompt {
+  color: rgb(16 185 129 / 0.5);
+}
+.about {
+  composes: fade-in-up from global;
+  color: var(--body-copy);
+  line-height: 1.625;
+}
+.about > * + * {
+  margin-top: 1rem;
+}
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.link {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  padding: 0.375rem 0.875rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: #57534e;
+  transition:
+    color 0.15s,
+    border-color 0.15s,
+    background-color 0.15s;
+}
+.link:hover {
+  border-color: #a8a29e;
+  color: #1c1917;
+}
+:global(.dark) .link {
+  color: #d6d3d1;
+}
+:global(.dark) .link:hover {
+  border-color: #57534e;
+  color: #fff;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-inline: 3rem;
+  }
+  .avatar {
+    width: 6rem;
+    height: 6rem;
+  }
+  .name {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}

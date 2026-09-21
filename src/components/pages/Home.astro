@@ -1,8 +1,10 @@
 ---
+import styles from './Home.module.css'
 import { getAuthorSchema, homeLinks } from '../../data/site'
 import { getPageCopy } from '../../i18n/pages'
-import Layout from '../../layouts/Layout.astro'
 import type { Lang } from '../../i18n/utils'
+import Layout from '../../layouts/Layout.astro'
+import AboutParagraphs from '../AboutParagraphs.astro'
 
 interface Props {
   lang: Lang
@@ -30,32 +32,32 @@ const schema = {
     type="application/ld+json"
     set:html={JSON.stringify(schema)}
   />
-  <main class="flex flex-1 items-center justify-center px-6 py-12 md:px-12">
-    <div class="max-w-xl w-full space-y-10">
+  <main class={styles.main}>
+    <div class={styles.content}>
       <header
-        class="fade-in-up flex items-center gap-5"
+        class={styles.header}
         style="animation-delay: 80ms"
       >
-        <picture class="flex">
+        <picture class={styles.picture}>
           <source srcset={copy.avatar.avif} type="image/avif" />
           <img
             src={copy.avatar.fallback}
             alt={copy.name}
-            class="h-20 w-20 flex-shrink-0 rounded-full object-cover shadow-lg shadow-stone-400/10 ring-2 ring-stone-200/80 md:h-24 md:w-24 dark:shadow-black/20 dark:ring-stone-700/50"
+            class={styles.avatar}
           />
         </picture>
 
         <div>
           <h1
             class:list={[
-              'text-[20px] md:text-4xl font-700 tracking-tight text-stone-900 dark:text-white leading-tight',
-              copy.nameSerif && 'font-serif',
+              styles.name,
+              copy.nameSerif && styles.serif,
             ]}
           >
             {copy.name}
           </h1>
           <p
-            class="mt-1.5 text-stone-500 font-mono dark:text-stone-400"
+            class={styles.tagline}
             data-typewriter
             data-text={copy.tagline}
             data-char-delay={copy.taglineCharDelay}
@@ -65,59 +67,38 @@ const schema = {
         </div>
       </header>
 
-      <div class="space-y-8">
-        <section class="fade-in-up" style="animation-delay: 160ms">
-          <h2 class="mb-3 text-xs text-stone-500 tracking-wide font-mono dark:text-stone-400">
+      <div class={styles.sections}>
+        <section class={styles.section} style="animation-delay: 160ms">
+          <h2 class={styles.sectionHeading}>
             <span
-              class="select-none text-emerald-600/70 dark:text-emerald-500/50"
+              class={styles.prompt}
               aria-hidden="true"
             >$
             </span>cat about.txt
           </h2>
           <div
-          class="fade-in-up text-stone-600 leading-relaxed space-y-4 dark:text-stone-400"
+          class={styles.about}
           style="animation-delay: 160ms"
         >
-          {aboutCopy.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          <AboutParagraphs paragraphs={aboutCopy.paragraphs} />
         </div>
         </section>
-        <!--<section class="fade-in-up" style="animation-delay: 160ms">
-          <h2 class="mb-3 text-xs text-stone-500 tracking-wide font-mono dark:text-stone-400">
-            <span
-              class="select-none text-emerald-600/70 dark:text-emerald-500/50"
-              aria-hidden="true"
-            >$
-            </span>cat creator.md
-          </h2>
-          <div class="flex flex-wrap gap-2">
-            {homeLinks.creator.map((link) => (
-              <a
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center border border-stone-200 rounded-full px-3.5 py-1.5 text-sm text-stone-600 font-500 transition-colors duration-150 dark:border-stone-800 hover:border-stone-400 dark:text-stone-300 hover:text-stone-900 dark:hover:border-stone-600 dark:hover:text-white"
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-        </section>-->
 
-        <section class="fade-in-up" style="animation-delay: 240ms">
-          <h2 class="mb-3 text-xs text-stone-500 tracking-wide font-mono dark:text-stone-400">
+        <section class={styles.section} style="animation-delay: 240ms">
+          <h2 class={styles.sectionHeading}>
             <span
-              class="select-none text-emerald-600/70 dark:text-emerald-500/50"
+              class={styles.prompt}
               aria-hidden="true"
             >$
             </span>cat links.md
           </h2>
-          <div class="flex flex-wrap gap-2">
+          <div class={styles.links}>
             {homeLinks.links.map((link) => (
               <a
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center border border-stone-200 rounded-full px-3.5 py-1.5 text-sm text-stone-600 font-500 transition-colors duration-150 dark:border-stone-800 hover:border-stone-400 dark:text-stone-300 hover:text-stone-900 dark:hover:border-stone-600 dark:hover:text-white"
+                class={styles.link}
               >
                 {link.name}
               </a>

@@ -1,7 +1,6 @@
 import type { Lang } from '../i18n/utils'
 
 type Localized<T> = Record<Lang, T>
-export type LocalizedString = string | Localized<string>
 
 interface AuthorSchema {
   '@type': 'Person'
@@ -14,18 +13,14 @@ interface AuthorSchema {
 export const siteMeta = {
   domain: 'teplostanski.me',
   url: 'https://teplostanski.me',
-  //analytics: {
-  //  domain: 'teplostanski.me',
-  //  scriptSrc: 'https://analytics.teplostanski.me/js/script.js',
-  //},
 } as const
 
 export const siteCopy = {
   author: {
-    canonicalName: 'Igor Teplostanski',
+    canonicalName: 'Teplostanski Igor',
     alternateName: 'Игорь Теплостанский',
     displayName: {
-      en: 'Igor Teplostanski',
+      en: 'Teplostanski Igor',
       ru: 'Игорь Теплостанский',
     },
     firstName: {
@@ -51,17 +46,6 @@ export const siteCopy = {
       ],
     },
   },
-  rss: {
-    en: {
-      title: 'Igor Teplostanski',
-      description:
-        'Blog posts by Igor Teplostanski, an open-source enthusiast.',
-    },
-    ru: {
-      title: 'Igor Teplostanski',
-      description: 'Блог Игоря Теплостанского.',
-    },
-  },
 } as const satisfies {
   author: {
     canonicalName: string
@@ -72,7 +56,6 @@ export const siteCopy = {
     titleRole: Localized<string>
     sameAs: Localized<readonly string[]>
   }
-  rss: Localized<{ title: string; description: string }>
 }
 
 export function getAuthorSchema(
@@ -95,23 +78,11 @@ interface Link {
   href: string
 }
 
-export interface Friend {
-  name: LocalizedString
-  bio: LocalizedString
-  avatar: LocalizedString
-  href: LocalizedString
-}
-
 interface HomeLinks {
-  creator: Link[]
   links: Link[]
 }
 
 export const homeLinks: HomeLinks = {
-  creator: [
-    //{ name: 'Vue Macros', href: 'https://vue-macros.dev' },
-    //{ name: 'Elk', href: 'https://github.com/elk-zone/elk' },
-  ],
   links: [
     { name: 'Email', href: 'mailto:contact@teplostanski.me' },
     { name: 'GitHub', href: 'https://github.com/teplostanski' },

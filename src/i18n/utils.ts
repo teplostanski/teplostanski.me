@@ -1,4 +1,4 @@
-import { defaultLang, localeByLang, showDefaultLang, ui } from './ui'
+import { defaultLang, showDefaultLang, ui } from './ui'
 
 export type Lang = keyof typeof ui
 
@@ -25,10 +25,6 @@ export function useTranslatedPath(lang: Lang) {
   }
 }
 
-export function getLocaleFromLang(lang: Lang) {
-  return localeByLang[lang] ?? localeByLang[defaultLang]
-}
-
 export function getPathWithoutLang(pathname: string): string {
   const segments = pathname.split('/')
   const [, maybeLang, ...rest] = segments
@@ -41,8 +37,4 @@ export function getPathWithoutLang(pathname: string): string {
 
 export function getUrlPrefix(lang: Lang): string {
   return !showDefaultLang && lang === defaultLang ? '' : `/${lang}`
-}
-
-export function getAllLangPrefixes(): string[] {
-  return (Object.keys(ui) as Lang[]).map((lang) => getUrlPrefix(lang))
 }

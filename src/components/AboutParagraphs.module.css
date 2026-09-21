@@ -1,0 +1,10 @@
+.projectLink {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.projectLink:hover {
+  color: #059669;
+}
+:global(.dark) .projectLink:hover {
+  color: #34d399;
+}

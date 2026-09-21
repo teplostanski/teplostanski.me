@@ -1,0 +1,19 @@
+---
+import styles from './AboutParagraphs.module.css'
+interface Props {
+  paragraphs: (string | { text: string; href?: string }[])[]
+}
+
+const { paragraphs } = Astro.props
+---
+
+{paragraphs.map((paragraph) => (
+  <p>{typeof paragraph === 'string' ? paragraph : paragraph.map((part) => (
+    part.href ? <a
+      href={part.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      class={styles.projectLink}
+    >{part.text}</a> : part.text
+  ))}</p>
+))}
