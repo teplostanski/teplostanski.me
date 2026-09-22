@@ -1,5 +1,4 @@
 ---
-import styles from './LanguageSwitcher.module.css'
 import { languages } from '../i18n/ui'
 import {
   getLangFromUrl,
@@ -7,6 +6,7 @@ import {
   useTranslatedPath,
   useTranslations,
 } from '../i18n/utils'
+import styles from './LanguageSwitcher.module.css'
 
 const pathname = Astro.url.pathname
 const lang = getLangFromUrl(Astro.url)

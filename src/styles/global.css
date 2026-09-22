@@ -110,6 +110,7 @@ hr {
   border-top-width: 1px;
 }
 [hidden] {
+  /* biome-ignore lint/complexity/noImportantStyles: Keep hidden elements hidden even when component styles set display. */
   display: none !important;
 }
 :root {
@@ -182,7 +183,6 @@ hr {
   }
 }
 
-
 @keyframes cursorBlink {
   0%,
   100% {
@@ -204,6 +204,7 @@ hr {
 
 @media (prefers-reduced-motion: reduce) {
   :root {
+    /* biome-ignore lint/complexity/noImportantStyles: Respect reduced motion even when the router sets transition styles. */
     view-transition-name: none !important;
   }
 }

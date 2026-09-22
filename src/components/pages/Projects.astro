@@ -1,0 +1,36 @@
+---
+import { projects } from '../../data/projects'
+import { getPageCopy } from '../../i18n/pages'
+import type { Lang } from '../../i18n/utils'
+import Layout from '../../layouts/Layout.astro'
+import styles from './Projects.module.css'
+
+interface Props {
+  lang: Lang
+}
+
+const { lang } = Astro.props
+const copy = getPageCopy('projects', lang)
+---
+
+<Layout title={copy.title} description={copy.description}>
+  <main class={styles.main}>
+    <div class={styles.content}>
+      <header class={styles.header} style="animation-delay: 80ms">
+        <h1 class={styles.heading}>{copy.heading}</h1>
+      </header>
+      <ul class={styles.projects}>
+        {projects.map((project, index) => (
+          <li class={styles.project} style={`animation-delay: ${160 + index * 80}ms`}>
+            <h2 class={styles.name}>
+              <a href={project.href} target="_blank" rel="noopener noreferrer" class={styles.link}>
+                {project.name}<span aria-hidden="true" class={styles.arrow}>↗</span>
+              </a>
+            </h2>
+            <p class={styles.description}>{project.description[lang]}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </main>
+</Layout>

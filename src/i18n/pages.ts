@@ -26,9 +26,16 @@ interface AboutCopy {
   paragraphs: (string | { text: string; href?: string }[])[]
 }
 
+interface ProjectsCopy {
+  title: string
+  description: string
+  heading: string
+}
+
 interface PageCopy {
   home: Record<Lang, HomeCopy>
   about: Record<Lang, AboutCopy>
+  projects: Record<Lang, ProjectsCopy>
 }
 
 const authorName = siteCopy.author.displayName
@@ -36,6 +43,18 @@ const authorTagline = siteCopy.author.tagline
 const authorTitleRole = siteCopy.author.titleRole
 
 export const pageCopy: PageCopy = {
+  projects: {
+    en: {
+      title: `Projects - ${authorName.en}`,
+      description: 'Open-source projects: rand, 200ok, and undevice.',
+      heading: 'Projects',
+    },
+    ru: {
+      title: `Проекты - ${authorName.ru}`,
+      description: 'Open-source проекты: rand, 200ok и undevice.',
+      heading: 'Проекты',
+    },
+  },
   home: {
     en: {
       title: `${authorName.en} - ${authorTitleRole.en}`,
@@ -82,7 +101,10 @@ export const pageCopy: PageCopy = {
           { text: ', ' },
           { text: '200ok', href: 'https://github.com/teplostanski/200ok' },
           { text: ', and ' },
-          { text: 'undevice', href: 'https://github.com/teplostanski/undevice' },
+          {
+            text: 'undevice',
+            href: 'https://github.com/teplostanski/undevice',
+          },
           { text: '.' },
         ],
       ],
@@ -99,7 +121,10 @@ export const pageCopy: PageCopy = {
           { text: ', ' },
           { text: '200ok', href: 'https://github.com/teplostanski/200ok' },
           { text: ' и ' },
-          { text: 'undevice', href: 'https://github.com/teplostanski/undevice' },
+          {
+            text: 'undevice',
+            href: 'https://github.com/teplostanski/undevice',
+          },
           { text: '.' },
         ],
       ],

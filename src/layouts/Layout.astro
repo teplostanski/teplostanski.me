@@ -1,5 +1,4 @@
 ---
-import styles from './Layout.module.css'
 import { ClientRouter } from 'astro:transitions'
 import LanguageSwitcher from '../components/LanguageSwitcher.astro'
 import ThemeSwitcher from '../components/ThemeSwitcher.astro'
@@ -11,6 +10,7 @@ import {
   useTranslatedPath,
   useTranslations,
 } from '../i18n/utils'
+import styles from './Layout.module.css'
 import '../styles/global.css'
 
 interface Props {
