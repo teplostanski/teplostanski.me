@@ -49,6 +49,32 @@ glhf!
 -->
   <head>
     <meta charset='utf-8' />
+    <meta name='color-scheme' content='light dark' />
+    <script is:inline>
+      (() => {
+        let stored = null
+        try {
+          stored = localStorage.getItem('theme')
+        } catch {
+          // Fall back to the system theme when storage is unavailable.
+        }
+        const dark = stored === 'dark' || (
+          stored !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches
+        )
+        document.documentElement.classList.toggle('dark', dark)
+      })()
+    </script>
+    <style is:inline>
+      :root {
+        color-scheme: light;
+        --page-background: #fafaf9;
+        background-color: var(--page-background);
+      }
+      :root.dark {
+        color-scheme: dark;
+        --page-background: #16171d;
+      }
+    </style>
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <link rel='icon' href='/favicon.ico' />
     <title>{title}</title>
@@ -95,15 +121,6 @@ glhf!
     <meta name='twitter:image' content={ogImage} />
     <meta name='twitter:image:alt' content={title} />
 
-    <script is:inline type='module'>
-      const stored = localStorage.getItem('theme')
-      const prefersDark = globalThis.matchMedia(
-        '(prefers-color-scheme: dark)',
-      ).matches
-      if (stored === 'dark' || (!stored && prefersDark)) {
-        document.documentElement.classList.add('dark')
-      }
-    </script>
 
     <ClientRouter />
     <slot name='head' />

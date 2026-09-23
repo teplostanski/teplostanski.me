@@ -1,15 +1,12 @@
 .body {
   display: flex;
   flex-direction: column;
-  background: #fafaf9;
+  background: var(--page-background);
   color: var(--text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100dvh;
-}
-:global(.dark) .body {
-  background: #16171d;
 }
 .body ::selection {
   background: rgb(28 25 23 / 0.1);
