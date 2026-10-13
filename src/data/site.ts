@@ -84,10 +84,10 @@ interface HomeLinks {
 
 export const homeLinks: HomeLinks = {
   links: [
-    { name: 'Email', href: 'mailto:contact@teplostanski.me' },
-    { name: 'GitHub', href: 'https://github.com/teplostanski' },
-    { name: 'Bluesky', href: 'https://bsky.app/profile/teplostanski.me' },
-    { name: 'Telegram', href: 'https://t.me/teplostanski' },
+    { name: 'Email', href: 'mailto:hi@teplostanski.me' },
+    { name: 'GitHub', href: 'https://gh.teplostanski.me' },
+    { name: 'Bluesky', href: 'https://bsky.teplostanski.me' },
+    { name: 'Telegram', href: 'https://tg.teplostanski.me' },
     { name: 'Codepen', href: 'https://codepen.io/teplostanski' },
   ],
 }
