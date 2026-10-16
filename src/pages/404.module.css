@@ -1,5 +1,4 @@
 .main {
-  composes: fade-in-up from global;
   display: flex;
   flex: 1 1 0%;
   flex-direction: column;
@@ -9,10 +8,7 @@
 }
 .code {
   font: 700 6rem / 1 var(--font-sans);
-  color: #e7e5e4;
-}
-:global(.dark) .code {
-  color: #292524;
+  color: var(--placeholder-text);
 }
 .description {
   margin-top: 1rem;
@@ -23,23 +19,16 @@
 .homeLink {
   margin-top: 2rem;
   border-radius: 0.5rem;
-  background: #292524;
+  background: var(--button-background);
   padding: 0.625rem 1.5rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
-  color: #fff;
+  color: var(--button-text);
   transition:
     color 0.2s,
     background-color 0.2s;
 }
 .homeLink:hover {
-  background: #44403c;
-}
-:global(.dark) .homeLink {
-  background: #e7e5e4;
-  color: #1c1917;
-}
-:global(.dark) .homeLink:hover {
-  background: #d6d3d1;
+  background: var(--button-hover-background);
 }

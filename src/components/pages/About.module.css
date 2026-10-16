@@ -28,11 +28,7 @@
   }
 }
 
-.header {
-  composes: fade-in-up from global;
-}
 .paragraphs {
-  composes: fade-in-up from global;
   color: var(--body-copy);
   line-height: 1.625;
 }
@@ -40,13 +36,9 @@
   margin-top: 1rem;
 }
 .footer {
-  composes: fade-in-up from global;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  color: #a8a29e;
-}
-:global(.dark) .footer {
-  color: #57534e;
+  color: var(--subtle-text);
 }
 .commitLink {
   font-family: var(--font-mono);

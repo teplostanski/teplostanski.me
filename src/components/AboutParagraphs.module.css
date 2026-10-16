@@ -3,8 +3,5 @@
   text-underline-offset: 4px;
 }
 .projectLink:hover {
-  color: #059669;
-}
-:global(.dark) .projectLink:hover {
-  color: #34d399;
+  color: var(--accent-hover);
 }

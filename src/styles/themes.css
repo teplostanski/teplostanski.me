@@ -1,0 +1,66 @@
+/* Theme values live here; components consume inherited semantic tokens. */
+:root {
+  color-scheme: light;
+  background-color: var(--page-background);
+  --page-background: #fafaf9;
+  --selection-background: rgb(28 25 23 / 0.1);
+  --avatar-ring: 0 0 0 1px rgb(214 211 209 / 0.7);
+  --footer-border: rgb(231 229 228 / 0.6);
+  --social-hover: #44403c;
+  --avatar-shadow:
+    0 0 0 2px rgb(231 229 228 / 0.8), 0 10px 15px -3px rgb(168 162 158 / 0.1),
+    0 4px 6px -4px rgb(168 162 158 / 0.1);
+  --prompt: rgb(5 150 105 / 0.7);
+  --chip-text: #57534e;
+  --chip-hover-text: #1c1917;
+  --chip-hover-border: #a8a29e;
+  --subtle-text: #a8a29e;
+  --accent-hover: #059669;
+  --popover-border: rgb(231 229 228 / 0.5);
+  --popover-background: rgb(255 255 255 / 0.8);
+  --placeholder-text: #e7e5e4;
+  --button-background: #292524;
+  --button-text: #fff;
+  --button-hover-background: #44403c;
+  --theme-moon-display: block;
+  --theme-sun-display: none;
+  --text: #292524;
+  --heading: #1c1917;
+  --muted: #78716c;
+  --body-copy: #57534e;
+  --border: #e7e5e4;
+  --link-hover: #292524;
+  --nprogress-color: rgba(28, 25, 23, 0.45);
+}
+:root.dark {
+  color-scheme: dark;
+  --page-background: #16171d;
+  --selection-background: rgb(245 245 244 / 0.1);
+  --avatar-ring: 0 0 0 1px rgb(68 64 60 / 0.7);
+  --footer-border: rgb(41 37 36 / 0.6);
+  --social-hover: #d6d3d1;
+  --avatar-shadow:
+    0 0 0 2px rgb(68 64 60 / 0.5), 0 10px 15px -3px rgb(0 0 0 / 0.2),
+    0 4px 6px -4px rgb(0 0 0 / 0.2);
+  --prompt: rgb(16 185 129 / 0.5);
+  --chip-text: #d6d3d1;
+  --chip-hover-text: #fff;
+  --chip-hover-border: #57534e;
+  --subtle-text: #57534e;
+  --accent-hover: #34d399;
+  --popover-border: rgb(41 37 36 / 0.5);
+  --popover-background: rgb(28 25 23 / 0.8);
+  --placeholder-text: #292524;
+  --button-background: #e7e5e4;
+  --button-text: #1c1917;
+  --button-hover-background: #d6d3d1;
+  --theme-moon-display: none;
+  --theme-sun-display: block;
+  --text: #e7e5e4;
+  --heading: #fff;
+  --muted: #a8a29e;
+  --body-copy: #a8a29e;
+  --border: #292524;
+  --link-hover: #e7e5e4;
+  --nprogress-color: rgba(231, 229, 228, 0.5);
+}

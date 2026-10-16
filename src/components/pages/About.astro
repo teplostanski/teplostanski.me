@@ -20,21 +20,21 @@ const buildDate = new Date().toISOString().split('T')[0]
 <Layout title={copy.title} description={copy.description}>
   <main class={styles.main}>
     <article class={styles.content}>
-      <header class={styles.header} style="animation-delay: 80ms">
+      <header class="fade-in-up" style="animation-delay: 80ms">
         <h1 class={styles.heading}>
           {copy.heading}
         </h1>
       </header>
 
       <section
-        class={styles.paragraphs}
+        class:list={[styles.paragraphs, 'fade-in-up']}
         style="animation-delay: 160ms"
       >
         <AboutParagraphs paragraphs={copy.paragraphs} />
       </section>
 
       <footer
-        class={styles.footer}
+        class:list={[styles.footer, 'fade-in-up']}
         style="animation-delay: 240ms"
       >
         <p>

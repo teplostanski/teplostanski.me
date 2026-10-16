@@ -1,152 +1,127 @@
 ---
-import { ClientRouter } from 'astro:transitions'
-import LanguageSwitcher from '../components/LanguageSwitcher.astro'
-import ThemeSwitcher from '../components/ThemeSwitcher.astro'
-import { pageCopy } from '../i18n/pages'
-import { defaultLang, languages, localeByLang, nav, social } from '../i18n/ui'
+import { ClientRouter } from 'astro:transitions';
+import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+import ThemeSwitcher from '../components/ThemeSwitcher.astro';
+import { pageCopy } from '../i18n/pages';
+import { defaultLang, languages, localeByLang, nav, social } from '../i18n/ui';
 import {
   getLangFromUrl,
   getPathWithoutLang,
   useTranslatedPath,
   useTranslations,
-} from '../i18n/utils'
-import styles from './Layout.module.css'
-import '../styles/global.css'
+} from '../i18n/utils';
+import styles from './Layout.module.css';
+import '../styles/global.css';
+import themeStyles from '../styles/themes.css?raw';
 
 interface Props {
-  title: string
-  description?: string
-  image?: string
+  title: string;
+  description?: string;
+  image?: string;
 }
 
-const { title, description, image } = Astro.props
-const pathname = Astro.url.pathname
-const lang = getLangFromUrl(Astro.url)
-const t = useTranslations(lang)
-const translatePath = useTranslatedPath(lang)
-const basePath = getPathWithoutLang(pathname)
+const { title, description, image } = Astro.props;
+const pathname = Astro.url.pathname;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+const basePath = getPathWithoutLang(pathname);
 const isHomeRoute =
-  pathname === '/' || pathname === '/ru' || pathname === '/ru/'
-const languageKeys = Object.keys(languages) as (keyof typeof languages)[]
+  pathname === '/' || pathname === '/ru' || pathname === '/ru/';
+const languageKeys = Object.keys(languages) as (keyof typeof languages)[];
 
-const site = Astro.site!
-const canonicalURL = new URL(pathname, site)
+const site = Astro.site!;
+const canonicalURL = new URL(pathname, site);
 const ogImage = image
   ? new URL(image, site).href
-  : new URL('/og-default.png', site).href
-const locale = localeByLang[lang]
+  : new URL('/og-default.png', site).href;
+const locale = localeByLang[lang];
 
-const hreflangLangs = languageKeys
+const hreflangLangs = languageKeys;
 ---
 
 <!doctype html>
 <html lang={lang}>
-<!--
+  <!--
 ╭─────╮ ✧
 │ ◠ ◡ ◠
 ╰─────╯
 glhf!
 -->
   <head>
-    <meta charset='utf-8' />
-    <meta name='color-scheme' content='light dark' />
+    <meta charset="utf-8" />
+    <meta name="color-scheme" content="light dark" />
     <script is:inline>
       (() => {
-        let stored = null
+        let stored = null;
         try {
-          stored = localStorage.getItem('theme')
+          stored = localStorage.getItem('theme');
         } catch {
           // Fall back to the system theme when storage is unavailable.
         }
-        const dark = stored === 'dark' || (
-          stored !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches
-        )
-        document.documentElement.classList.toggle('dark', dark)
-      })()
+        const dark =
+          stored === 'dark' ||
+          (stored !== 'light' &&
+            matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.classList.toggle('dark', dark);
+      })();
     </script>
-    <style is:inline>
-      :root {
-        color-scheme: light;
-        --page-background: #fafaf9;
-        background-color: var(--page-background);
-      }
-      :root.dark {
-        color-scheme: dark;
-        --page-background: #16171d;
-      }
-    </style>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <link rel='icon' href='/favicon.ico' />
+    <style is:inline set:html={themeStyles} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" />
     <title>{title}</title>
-    {description && <meta name='description' content={description} />}
-    <link rel='canonical' href={canonicalURL.href} />
+    {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonicalURL.href} />
 
     {
       hreflangLangs.map((l) => {
         const href = new URL(
           l === defaultLang ? basePath || '/' : `/${l}${basePath || '/'}`,
           site,
-        ).href
-        return <link rel='alternate' hreflang={localeByLang[l]} href={href} />
+        ).href;
+        return <link rel="alternate" hreflang={localeByLang[l]} href={href} />;
       })
     }
     {
       hreflangLangs.length > 1 && (
         <link
-          rel='alternate'
-          hreflang='x-default'
+          rel="alternate"
+          hreflang="x-default"
           href={new URL(basePath || '/', site).href}
         />
       )
     }
 
-    <meta property='og:title' content={title} />
-    {description && <meta property='og:description' content={description} />}
-    <meta property='og:url' content={canonicalURL.href} />
-    <meta property='og:site_name' content={pageCopy.home[lang].name} />
-    <meta property='og:type' content='website' />
-    <meta property='og:image' content={ogImage} />
-    <meta property='og:locale' content={locale} />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:site_name" content={pageCopy.home[lang].name} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={locale} />
     {
       hreflangLangs
         .filter((l) => l !== lang)
         .map((l) => (
-          <meta property='og:locale:alternate' content={localeByLang[l]} />
+          <meta property="og:locale:alternate" content={localeByLang[l]} />
         ))
     }
 
-    <meta name='twitter:card' content='summary_large_image' />
-    <meta name='twitter:title' content={title} />
-    {description && <meta name='twitter:description' content={description} />}
-    <meta name='twitter:image' content={ogImage} />
-    <meta name='twitter:image:alt' content={title} />
-
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={title} />
 
     <ClientRouter />
-    <slot name='head' />
+    <slot name="head" />
   </head>
-  <body
-    class={styles.body}
-    style='text-autospace: normal'
-  >
-    <nav
-      class:list={[
-        styles.nav,
-        isHomeRoute && styles.homeNav,
-      ]}
-    >
-      <a
-        href={translatePath('/')}
-        class:list={[
-          styles.brand,
-        ]}
-      >
+  <body class={styles.body} style="text-autospace: normal">
+    <nav class:list={['fade-in', styles.nav, isHomeRoute && styles.homeNav]}>
+      <a href={translatePath('/')} class:list={[styles.brand]}>
         {pageCopy.home[lang].name}{
           basePath === '/' && (
-            <span
-              class={styles.cursor}
-              aria-hidden='true'
-            >
+            <span class:list={[styles.cursor, 'terminal-cursor']} aria-hidden="true">
               _
             </span>
           )
@@ -160,18 +135,16 @@ glhf!
             class={styles.avatarLink}
           >
             <img
-              src='/avatar.jpg'
+              src="/avatar.jpg"
               alt={pageCopy.home[lang].name}
               class={styles.avatar}
-              loading='eager'
-              decoding='async'
+              loading="eager"
+              decoding="async"
             />
           </a>
         )
       }
-      <div
-        class={styles.controls}
-      >
+      <div class={styles.controls}>
         {
           nav
             .filter((item) => !item.langs || item.langs.includes(lang))
@@ -196,52 +169,60 @@ glhf!
 
     <slot />
 
-    <footer
-      class={styles.footer}
-    >
-      {
-        social.map((link) => (
-          <a
-            href={link.localeHref?.[lang] ?? link.href}
-            target='_blank'
-            rel='noopener noreferrer'
-            class={styles.socialLink}
-            aria-label={link.label}
-          >
-            <svg class={styles.socialIcon} viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d={link.iconPath} /></svg>
-          </a>
-        ))
-      }
+    <footer class:list={[styles.footer, 'fade-in']}>
+      <div class:list={[styles.social, 'fade-in']}>
+        {
+          social.map((link) => (
+            <a
+              href={link.localeHref?.[lang] ?? link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={styles.socialLink}
+              aria-label={link.label}
+            >
+              <svg
+                class={styles.socialIcon}
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="currentColor"
+              >
+                <path d={link.iconPath} />
+              </svg>
+            </a>
+          ))
+        }
+      </div>
+      <a class={styles.heartbeat} href="https://heartbeat.teplostanski.me" target="_blank" rel="noopener noreferrer">Heartbeat</a>
     </footer>
   </body>
 </html>
 
 <!-- NProgress -->
 <script>
-  import NProgress from 'nprogress'
+  import NProgress from 'nprogress';
 
   NProgress.configure({
     showSpinner: false,
     trickleSpeed: 120,
     minimum: 0.08,
-  })
+  });
 
-  let nprogressTimer: ReturnType<typeof globalThis.setTimeout> | undefined
+  let nprogressTimer: ReturnType<typeof globalThis.setTimeout> | undefined;
   function startProgress() {
-    if (nprogressTimer) return
+    if (nprogressTimer) return;
     nprogressTimer = globalThis.setTimeout(() => {
-      NProgress.start()
-    }, 120)
+      NProgress.start();
+    }, 120);
   }
   function stopProgress() {
     if (nprogressTimer != null) {
-      clearTimeout(nprogressTimer)
-      nprogressTimer = undefined
+      clearTimeout(nprogressTimer);
+      nprogressTimer = undefined;
     }
-    NProgress.done(true)
+    NProgress.done(true);
   }
 
-  document.addEventListener('astro:before-preparation', startProgress)
-  document.addEventListener('astro:after-swap', stopProgress)
-  document.addEventListener('astro:page-load', stopProgress)
+  document.addEventListener('astro:before-preparation', startProgress);
+  document.addEventListener('astro:after-swap', stopProgress);
+  document.addEventListener('astro:page-load', stopProgress);
 </script>

@@ -12,12 +12,9 @@
   height: 1rem;
   width: 1rem;
 }
+.moon {
+  display: var(--theme-moon-display);
+}
 .sun {
-  display: none;
-}
-:global(.dark) .moon {
-  display: none;
-}
-:global(.dark) .sun {
-  display: block;
+  display: var(--theme-sun-display);
 }

@@ -116,20 +116,6 @@ hr {
 :root {
   --font-sans: "Geist", system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
-  --text: #292524;
-  --heading: #1c1917;
-  --muted: #78716c;
-  --body-copy: #57534e;
-  --border: #e7e5e4;
-  --link-hover: #292524;
-}
-:root.dark {
-  --text: #e7e5e4;
-  --heading: #fff;
-  --muted: #a8a29e;
-  --body-copy: #a8a29e;
-  --border: #292524;
-  --link-hover: #e7e5e4;
 }
 
 @font-face {
@@ -255,14 +241,6 @@ html {
     animation: none;
     display: none;
   }
-}
-
-:root {
-  --nprogress-color: rgba(28, 25, 23, 0.45);
-}
-
-.dark {
-  --nprogress-color: rgba(231, 229, 228, 0.5);
 }
 
 #nprogress {

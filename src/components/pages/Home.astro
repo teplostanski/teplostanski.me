@@ -35,7 +35,7 @@ const schema = {
   <main class={styles.main}>
     <div class={styles.content}>
       <header
-        class={styles.header}
+        class:list={[styles.header, 'fade-in-up']}
         style="animation-delay: 80ms"
       >
         <picture class={styles.picture}>
@@ -68,7 +68,7 @@ const schema = {
       </header>
 
       <div class={styles.sections}>
-        <section class={styles.section} style="animation-delay: 160ms">
+        <section class="fade-in-up" style="animation-delay: 160ms">
           <h2 class={styles.sectionHeading}>
             <span
               class={styles.prompt}
@@ -77,14 +77,14 @@ const schema = {
             </span>cat about.txt
           </h2>
           <div
-          class={styles.about}
+          class:list={[styles.about, 'fade-in-up']}
           style="animation-delay: 160ms"
         >
           <AboutParagraphs paragraphs={aboutCopy.paragraphs} />
         </div>
         </section>
 
-        <section class={styles.section} style="animation-delay: 240ms">
+        <section class="fade-in-up" style="animation-delay: 240ms">
           <h2 class={styles.sectionHeading}>
             <span
               class={styles.prompt}

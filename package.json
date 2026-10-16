@@ -20,14 +20,14 @@
     "check": "biome check ."
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.2",
-    "astro": "^6.1.7",
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.3.8",
     "geist": "^1.7.0",
     "goat-counter": "^0.2.0",
     "nprogress": "^0.2.0"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.8",
+    "@astrojs/check": "^0.9.10",
     "@biomejs/biome": "^2.5.14",
     "@resvg/resvg-js": "^2.6.2",
     "@types/node": "^25.2.0",
