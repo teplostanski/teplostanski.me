@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
-    "astro": "^7.3.8",
+    "astro": "^7.4.4",
     "geist": "^1.7.0",
     "goat-counter": "^0.2.0",
     "nprogress": "^0.2.0"
