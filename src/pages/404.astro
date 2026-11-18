@@ -1,34 +1,52 @@
 ---
-import {
-  getLangFromUrl,
-  useTranslatedPath,
-  useTranslations,
-} from '../i18n/utils'
+import { ui } from '../i18n/ui'
+import { getLangFromUrl } from '../i18n/utils'
 import Layout from '../layouts/Layout.astro'
-import styles from './404.module.css'
 
 const lang = getLangFromUrl(Astro.url)
-const t = useTranslations(lang)
-const translatePath = useTranslatedPath(lang)
+const text = ui[lang].notFound
 ---
 
-<Layout title={t('notFound.title')}>
-  <main
-    class:list={[styles.main, 'fade-in-up']}
-  >
-    <h1
-      class={styles.code}
-    >
-      404
-    </h1>
-    <p class={styles.description}>
-      {t('notFound.description')}
+<Layout lang={lang}>
+  <main class="not-found-main">
+    <h1 class="not-found-code">404</h1>
+    <p class="not-found-description">
+      {text.description}
     </p>
     <a
-      href={translatePath('/')}
-      class={styles.homeLink}
+      href={lang === 'ru' ? '/ru/' : '/'}
+      class="not-found-home-link"
     >
-      {t('notFound.backHome')}
+      &lt; {text.homeLink}
     </a>
   </main>
 </Layout>
+
+<style>
+  .not-found-main {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 4rem 0;
+  }
+
+  .not-found-code {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+
+  .not-found-description {
+    margin-top: 1rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    color: var(--body-copy);
+  }
+
+  .not-found-home-link {
+    margin-top: 2rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+  }
+</style>

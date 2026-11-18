@@ -1,43 +1,20 @@
 ---
-import { ClientRouter } from 'astro:transitions';
-import LanguageSwitcher from '../components/LanguageSwitcher.astro';
-import ThemeSwitcher from '../components/ThemeSwitcher.astro';
-import { pageCopy } from '../i18n/pages';
-import { defaultLang, languages, localeByLang, nav, social } from '../i18n/ui';
-import {
-  getLangFromUrl,
-  getPathWithoutLang,
-  useTranslatedPath,
-  useTranslations,
-} from '../i18n/utils';
-import styles from './Layout.module.css';
-import '../styles/global.css';
-import themeStyles from '../styles/themes.css?raw';
+import '../styles/global.css'
+import '../styles/themes.css'
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import type { Lang } from '../i18n/utils'
 
 interface Props {
-  title: string;
-  description?: string;
-  image?: string;
+  lang?: Lang
 }
 
-const { title, description, image } = Astro.props;
-const pathname = Astro.url.pathname;
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-const translatePath = useTranslatedPath(lang);
-const basePath = getPathWithoutLang(pathname);
-const isHomeRoute =
-  pathname === '/' || pathname === '/ru' || pathname === '/ru/';
-const languageKeys = Object.keys(languages) as (keyof typeof languages)[];
-
-const site = Astro.site!;
-const canonicalURL = new URL(pathname, site);
-const ogImage = image
-  ? new URL(image, site).href
-  : new URL('/og-default.png', site).href;
-const locale = localeByLang[lang];
-
-const hreflangLangs = languageKeys;
+const { lang = 'en' } = Astro.props
+const targetLang = lang === 'en' ? 'ru' : 'en'
+const currentPath = Astro.url.pathname.replace(/^\/ru(?:\/|$)/, '').replace(/^\/+|\/+$/g, '')
+const homeUrl = getRelativeLocaleUrl(lang, '/')
+const languageUrl = getRelativeLocaleUrl(targetLang, currentPath)
+const languageLabel = lang === 'en' ? 'Russian' : 'English'
+const author = { en: 'Teplostanski Igor', ru: 'Игорь Теплостанский' }
 ---
 
 <!doctype html>
@@ -50,179 +27,108 @@ glhf!
 -->
   <head>
     <meta charset="utf-8" />
-    <meta name="color-scheme" content="light dark" />
-    <script is:inline>
-      (() => {
-        let stored = null;
-        try {
-          stored = localStorage.getItem('theme');
-        } catch {
-          // Fall back to the system theme when storage is unavailable.
-        }
-        const dark =
-          stored === 'dark' ||
-          (stored !== 'light' &&
-            matchMedia('(prefers-color-scheme: dark)').matches);
-        document.documentElement.classList.toggle('dark', dark);
-      })();
-    </script>
-    <style is:inline set:html={themeStyles} />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
-    <title>{title}</title>
-    {description && <meta name="description" content={description} />}
-    <link rel="canonical" href={canonicalURL.href} />
-
-    {
-      hreflangLangs.map((l) => {
-        const href = new URL(
-          l === defaultLang ? basePath || '/' : `/${l}${basePath || '/'}`,
-          site,
-        ).href;
-        return <link rel="alternate" hreflang={localeByLang[l]} href={href} />;
-      })
-    }
-    {
-      hreflangLangs.length > 1 && (
-        <link
-          rel="alternate"
-          hreflang="x-default"
-          href={new URL(basePath || '/', site).href}
-        />
-      )
-    }
-
-    <meta property="og:title" content={title} />
-    {description && <meta property="og:description" content={description} />}
-    <meta property="og:url" content={canonicalURL.href} />
-    <meta property="og:site_name" content={pageCopy.home[lang].name} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0b0b0b" />
+    <meta name="description" content="Igor Teplostanski. Open-source enthusiast building tools, REST APIs, CLIs, and web apps with TypeScript." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:locale" content={locale} />
-    {
-      hreflangLangs
-        .filter((l) => l !== lang)
-        .map((l) => (
-          <meta property="og:locale:alternate" content={localeByLang[l]} />
-        ))
-    }
-
+    <meta property="og:site_name" content="teplostanski.me" />
+    <meta property="og:title" content="teplostanski.me" />
+    <meta property="og:description" content="Igor Teplostanski. Open-source enthusiast building tools, REST APIs, CLIs, and web apps with TypeScript." />
+    <meta property="og:url" content={`https://teplostanski.me${Astro.url.pathname}`} />
+    <meta property="og:image" content="https://teplostanski.me/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="teplostanski.me, personal website of Igor Teplostanski" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    {description && <meta name="twitter:description" content={description} />}
-    <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content={title} />
-
-    <ClientRouter />
-    <slot name="head" />
+    <meta name="twitter:title" content="teplostanski.me" />
+    <meta name="twitter:description" content="Igor Teplostanski. Open-source enthusiast building tools, REST APIs, CLIs, and web apps with TypeScript." />
+    <meta name="twitter:image" content="https://teplostanski.me/og-image.png" />
+    <title>teplostanski.me</title>
   </head>
-  <body class={styles.body} style="text-autospace: normal">
-    <nav class:list={['fade-in', styles.nav, isHomeRoute && styles.homeNav]}>
-      <a href={translatePath('/')} class:list={[styles.brand]}>
-        {pageCopy.home[lang].name}{
-          basePath === '/' && (
-            <span class:list={[styles.cursor, 'terminal-cursor']} aria-hidden="true">
-              _
-            </span>
-          )
-        }
-      </a>
-      {
-        !isHomeRoute && (
-          <a
-            href={translatePath('/')}
-            aria-label={pageCopy.home[lang].name}
-            class={styles.avatarLink}
+  <body>
+    <main class="layout">
+      <h1 class="layout-logo" aria-label={author[lang]}>
+        <a href={homeUrl}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="43"
+            height="6"
+            viewBox="0 0 43 6"
+            shape-rendering="crispEdges"
+            aria-hidden="true"
+            focusable="false"
           >
-            <img
-              src="/avatar.jpg"
-              alt={pageCopy.home[lang].name}
-              class={styles.avatar}
-              loading="eager"
-              decoding="async"
+            <path
+              fill="currentColor"
+              d="M0 0h1v5h-1zM12 0h1v5h-1zM22 0h1v5h-1zM38 0h1v5h-1zM42 0h1v1h-1zM1 1h2v1h-2zM4 1h3v1h-3zM8 1h3v1h-3zM14 1h3v1h-3zM18 1h3v1h-3zM23 1h2v1h-2zM26 1h3v1h-3zM30 1h2v1h-2zM34 1h3v1h-3zM40 1h1v1h-1zM4 2h1v3h-1zM6 2h1v1h-1zM8 2h1v4h-1zM10 2h1v3h-1zM14 2h1v3h-1zM16 2h1v3h-1zM18 2h1v1h-1zM26 2h1v3h-1zM28 2h1v3h-1zM30 2h1v3h-1zM32 2h1v3h-1zM34 2h1v1h-1zM39 2h1v1h-1zM42 2h1v3h-1zM2 3h1v2h-1zM20 3h1v2h-1zM24 3h1v2h-1zM27 3h1v1h-1zM36 3h1v2h-1zM40 3h1v2h-1zM1 4h1v1h-1zM5 4h2v1h-2zM9 4h1v1h-1zM15 4h1v1h-1zM18 4h2v1h-2zM23 4h1v1h-1zM34 4h2v1h-2z"
             />
-          </a>
-        )
-      }
-      <div class={styles.controls}>
-        {
-          nav
-            .filter((item) => !item.langs || item.langs.includes(lang))
-            .map((item) => (
-              <a
-                href={translatePath(item.href)}
-                class:list={[
-                  styles.navLink,
-                  pathname.startsWith(translatePath(item.href))
-                    ? styles.activeLink
-                    : styles.inactiveLink,
-                ]}
-              >
-                {t(item.key)}
-              </a>
-            ))
-        }
-        <LanguageSwitcher />
-        <ThemeSwitcher />
-      </div>
-    </nav>
+          </svg>
+        </a>
+      </h1>
 
-    <slot />
+      <slot />
 
-    <footer class:list={[styles.footer, 'fade-in']}>
-      <div class:list={[styles.social, 'fade-in']}>
-        {
-          social.map((link) => (
+      <footer class="layout-footer">
+        © 2022-present Teplostanski Igor.
+        <ul class="layout-links">
+          <li>
             <a
-              href={link.localeHref?.[lang] ?? link.href}
+              href="https://heartbeat.teplostanski.me"
               target="_blank"
               rel="noopener noreferrer"
-              class={styles.socialLink}
-              aria-label={link.label}
             >
-              <svg
-                class={styles.socialIcon}
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                fill="currentColor"
-              >
-                <path d={link.iconPath} />
-              </svg>
+              Heartbeat
             </a>
-          ))
-        }
-      </div>
-      <a class={styles.heartbeat} href="https://heartbeat.teplostanski.me" target="_blank" rel="noopener noreferrer">Heartbeat</a>
-    </footer>
+          </li>
+          <li>
+            <a href={languageUrl} hreflang={targetLang} data-language-switcher>
+              {languageLabel}
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </main>
   </body>
 </html>
 
-<!-- NProgress -->
-<script>
-  import NProgress from 'nprogress';
-
-  NProgress.configure({
-    showSpinner: false,
-    trickleSpeed: 120,
-    minimum: 0.08,
-  });
-
-  let nprogressTimer: ReturnType<typeof globalThis.setTimeout> | undefined;
-  function startProgress() {
-    if (nprogressTimer) return;
-    nprogressTimer = globalThis.setTimeout(() => {
-      NProgress.start();
-    }, 120);
+<style>
+  .layout {
+    margin-inline: auto;
+    max-width: var(--frame-width);
   }
-  function stopProgress() {
-    if (nprogressTimer != null) {
-      clearTimeout(nprogressTimer);
-      nprogressTimer = undefined;
+
+  .layout-logo {
+    width: 270px;
+    color: var(--heading);
+
+    & a {
+      color: inherit;
     }
-    NProgress.done(true);
+
+    & svg {
+      width: 100%;
+      height: auto;
+    }
   }
 
-  document.addEventListener('astro:before-preparation', startProgress);
-  document.addEventListener('astro:after-swap', stopProgress);
-  document.addEventListener('astro:page-load', stopProgress);
-</script>
+  .layout-footer {
+    display: flex;
+    gap: 0.85rem;
+    flex-wrap: balance;
+    margin-top: 1.5rem;
+  }
+
+  .layout-links {
+    display: flex;
+    gap: 0.65rem;
+  }
+
+  @media (min-width: 640px) {
+    .layout-logo {
+      width: 370px;
+    }
+  }
+</style>

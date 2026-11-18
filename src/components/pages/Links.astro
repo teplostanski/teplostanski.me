@@ -1,0 +1,54 @@
+---
+import { links } from '../../data/links'
+import { ui } from '../../i18n/ui'
+import type { Lang } from '../../i18n/utils'
+
+interface Props {
+  lang: Lang
+}
+
+const { lang = 'en' } = Astro.props as Props
+const text = ui[lang]
+---
+
+<div class="links-main">
+  <h1 class="links-heading">{text.navigation.links}</h1>
+  <ul class="links-list">
+    {links.map((link) => (
+      <li>
+        <a
+          href={link.href}
+          target={link.href.startsWith('https://') ? '_blank' : undefined}
+          rel={
+            link.href.startsWith('https://')
+              ? 'noopener noreferrer'
+              : undefined
+          }
+        >
+          {link.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .links-main {
+    padding: 4rem 0;
+  }
+
+  .links-heading {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+
+  .links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    list-style-type: disc;
+    padding-inline-start: 1.2rem;
+  }
+</style>

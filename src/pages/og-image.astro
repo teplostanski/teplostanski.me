@@ -1,0 +1,124 @@
+---
+import '../styles/global.css';
+import '../styles/themes.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>teplostanski.me OG image</title>
+  </head>
+  <body>
+    <main class="og-card">
+      <div class="topline">
+        <span>PERSONAL WEBSITE</span>
+      </div>
+      <section>
+        <div class="logo" aria-label="teplostanski.me">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 43 6"
+            shape-rendering="crispEdges"
+            aria-hidden="true"
+          >
+            <path
+              fill="currentColor"
+              d="M0 0h1v5h-1zM12 0h1v5h-1zM22 0h1v5h-1zM38 0h1v5h-1zM42 0h1v1h-1zM1 1h2v1h-2zM4 1h3v1h-3zM8 1h3v1h-3zM14 1h3v1h-3zM18 1h3v1h-3zM23 1h2v1h-2zM26 1h3v1h-3zM30 1h2v1h-2zM34 1h3v1h-3zM40 1h1v1h-1zM4 2h1v3h-1zM6 2h1v1h-1zM8 2h1v4h-1zM10 2h1v3h-1zM14 2h1v3h-1zM16 2h1v3h-1zM18 2h1v1h-1zM26 2h1v3h-1zM28 2h1v3h-1zM30 2h1v3h-1zM32 2h1v3h-1zM34 2h1v1h-1zM39 2h1v1h-1zM42 2h1v3h-1zM2 3h1v2h-1zM20 3h1v2h-1zM24 3h1v2h-1zM27 3h1v1h-1zM36 3h1v2h-1zM40 3h1v2h-1zM1 4h1v1h-1zM5 4h2v1h-2zM9 4h1v1h-1zM15 4h1v1h-1zM18 4h2v1h-2zM23 4h1v1h-1zM34 4h2v1h-2z"
+            />
+          </svg>
+        </div>
+        <p>
+          Open-source enthusiast
+          <br />
+          building with TypeScript.
+        </p>
+      </section>
+      <div class="bottomline">
+        <span>TOOLS · REST APIS · CLIS · WEB APPS</span>
+        <span>teplostanski.me ↗</span>
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  @page {
+    size: 1200px 630px;
+    margin: 0;
+  }
+  :global(html),
+  :global(body) {
+    width: 1200px;
+    height: 630px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  :global(body) {
+    background: #000;
+    color: #ededed;
+  }
+  .og-card {
+    position: relative;
+    width: 1200px;
+    height: 630px;
+    padding: 48px 64px;
+    overflow: hidden;
+    background: #000;
+  }
+  .og-card::before {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(#ffffff0c 1px, transparent 1px),
+      linear-gradient(90deg, #ffffff0c 1px, transparent 1px);
+    background-size: 32px 32px;
+    content: '';
+    mask-image: linear-gradient(90deg, #000 0%, transparent 78%);
+  }
+  .topline,
+  .bottomline {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    color: #808080;
+    font-size: 26px;
+    letter-spacing: 0.08em;
+  }
+  section {
+    position: relative;
+    margin-top: 83px;
+  }
+  .logo {
+    width: 430px;
+    color: #ededed;
+  }
+  .logo svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  h1 {
+    margin-top: 30px;
+    font-size: 76px;
+    line-height: 1.05;
+    letter-spacing: -0.06em;
+  }
+  p {
+    margin-top: 22px;
+    color: #a3a3a3;
+    font-size: 36px;
+    line-height: 1.45;
+  }
+  .bottomline {
+    position: absolute;
+    right: 64px;
+    bottom: 44px;
+    left: 64px;
+    align-items: center;
+  }
+  .bottomline span:last-child {
+    color: #4d8eff;
+  }
+</style>

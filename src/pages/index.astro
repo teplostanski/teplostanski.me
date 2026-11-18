@@ -1,8 +1,11 @@
 ---
 import HomePage from '../components/pages/Home.astro'
 import { getLangFromUrl } from '../i18n/utils'
+import Layout from '../layouts/Layout.astro'
 
 const lang = getLangFromUrl(Astro.url)
 ---
 
-<HomePage lang={lang} />
+<Layout lang={lang}>
+  <HomePage lang={lang} />
+</Layout>

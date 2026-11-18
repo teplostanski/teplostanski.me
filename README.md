@@ -11,14 +11,14 @@
       <a href="https://teplostanski.me/projects">projects</a>
     </samp>
   </p>
-  
+
   <b>
     <samp>My personal website.</samp>
   </b>
-  
+
   <br>
   <br>
 
-  <samp>If my code has been helpful to you, kindly consider [sponsoring me](https://thanks.teplostanski.me).</samp>
+<samp>If my code has been helpful to you, kindly consider [sponsoring me](https://thanks.teplostanski.me).</samp>
 
 </div>

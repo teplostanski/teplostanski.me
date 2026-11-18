@@ -1,0 +1,242 @@
+---
+const fallback = ' • • • • • • • • •';
+---
+
+<pre
+  class="pacman-divider"
+  data-pacman-divider
+  data-fallback={fallback}
+>{fallback}</pre>
+
+<script>
+  const TICK = 200;
+  const frames = [
+    'C• • • • • • • • •',
+    ' c • • • • • • • •',
+    ' C • • • • • • • •',
+    '  c• • • • • • • •',
+    '  C• • • • • • • •',
+    '   c • • • • • • •',
+    '@  C • • • • • • •',
+    ' @  c• • • • • • •',
+    ' @  C• • • • • • •',
+    '  @  c • • • • • •',
+    '  @  C • • • • • •',
+    '@  @  c• • • • • •',
+    '@  @  C• • • • • •',
+    ' @  @  c • • • • •',
+    ' @  @  C • • • • •',
+    '@ @  @  c• • • • •',
+    '@ @  @  C• • • • •',
+    ' @ @  @  c • • • •',
+    ' @ @  @  C • • • •',
+    '@ @ @  @  c• • • •',
+    '@ @ @  @  C• • • •',
+    ' @ @ @  @  c • • •',
+    ' @ @ @  @  C • • •',
+    '  @ @ @  @  c• • •',
+    '  @ @ @  @  C• • •',
+    '   @ @ @  @  c • •',
+    '   @ @ @  @  C • •',
+    '    @ @ @  @  c• •',
+    '    @ @ @  @  C• •',
+    '     @ @ @  @  c •',
+    '     @ @ @  @  C •',
+    '      @ @ @  @  c•',
+    '      @ @ @  @  C•',
+    '       @ @ @  @  c',
+    '       @ @ @  @  C',
+    '        @ @ @  @  ',
+    '        @ @ @  @  ',
+    '        @ @ @  @  ',
+    '         @ @ @  @ ',
+    '         @ @ @  @ ',
+    '         @ @ @  @ ',
+    '          @ @ @  @',
+    '          @ @ @  @',
+    '          @ @ @  @',
+    '           @ @ @  ',
+    '           @ @ @  ',
+    '           @ @ @  ',
+    '            @ @ @ ',
+    '            @ @ @ ',
+    '            @ @ @ ',
+    '             @ @ @',
+    '             @ @ @',
+    '             @ @ @',
+    '              @ @ ',
+    '              @ @ ',
+    '              @ @ ',
+    '               @ @',
+    '               @ @',
+    '               @ @',
+    '                @ ',
+    '                @ ',
+    '                @ ',
+    '                 @',
+    '                 @',
+    '                 @',
+    '                  ',
+    '                 •',
+    '               • •',
+    '             • • •',
+    '           • • • •',
+    '         • • • • •',
+    '       • • • • • •',
+    '     • • • • • • •',
+    '   • • • • • • • •',
+    ' • • • • • • • • •',
+  ];
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const ghostColors = [
+    'var(--pacman-ghost-1)',
+    'var(--pacman-ghost-2)',
+    'var(--pacman-ghost-3)',
+    'var(--pacman-ghost-4)',
+  ];
+
+  interface Runner {
+    element: HTMLElement;
+    fallback: string;
+    tick: number;
+    active: boolean;
+    maxGhostsSeen: number;
+  }
+
+  const render = (element: HTMLElement, frame: string, maxGhostsSeen = 0) => {
+    const content: Node[] = [];
+    let cursor = 0;
+    const ghosts = [...frame.matchAll(/@/g)];
+    let ghostIndex = 0;
+
+    for (const match of frame.matchAll(/[Cc@]/g)) {
+      const index = match.index;
+      content.push(document.createTextNode(frame.slice(cursor, index)));
+
+      const glyph = document.createElement('span');
+      glyph.textContent = match[0];
+      glyph.style.cssText =
+        'display:inline-block;width:1ch;vertical-align:baseline';
+      if (match[0] === '@') {
+        glyph.style.color = ghostColors[maxGhostsSeen - 1 - ghostIndex]!;
+        ghostIndex++;
+      } else {
+        glyph.style.color = 'var(--pacman-color)';
+      }
+      content.push(glyph);
+      cursor = index + 1;
+    }
+
+    content.push(document.createTextNode(frame.slice(cursor)));
+    element.replaceChildren(...content);
+  };
+
+  const runners: Runner[] = [
+    ...document.querySelectorAll<HTMLElement>('[data-pacman-divider]'),
+  ].map((element) => {
+    const fallback = element.dataset.fallback ?? '';
+    render(element, fallback);
+    return {
+      element,
+      fallback,
+      tick: 0,
+      active: false,
+      maxGhostsSeen: 0,
+    };
+  });
+
+  let timer = 0;
+
+  const step = () => {
+    let running = false;
+    for (const runner of runners) {
+      if (!runner.active) continue;
+      if (runner.tick >= frames.length) {
+        runner.active = false;
+        render(runner.element, runner.fallback);
+        continue;
+      }
+      const frame = frames[runner.tick]!;
+      runner.maxGhostsSeen = Math.max(
+        runner.maxGhostsSeen,
+        [...frame.matchAll(/@/g)].length,
+      );
+      render(runner.element, frame, runner.maxGhostsSeen);
+      runner.tick += 1;
+      running = true;
+    }
+
+    if (!running) {
+      window.clearInterval(timer);
+      timer = 0;
+    }
+  };
+
+  const schedule = () => {
+    if (!timer) timer = window.setInterval(step, TICK);
+  };
+
+  const start = (runner: Runner) => {
+    if (reducedMotion.matches || runner.active) return;
+    runner.tick = 0;
+    runner.active = true;
+    runner.maxGhostsSeen = 0;
+    schedule();
+  };
+
+  for (const runner of runners) {
+    runner.element.addEventListener('pointerenter', () => start(runner));
+    runner.element.addEventListener('click', () => start(runner));
+    start(runner);
+  }
+
+  reducedMotion.addEventListener('change', (event) => {
+    if (!event.matches) return;
+    for (const runner of runners) {
+      runner.active = false;
+      render(runner.element, runner.fallback);
+    }
+  });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      window.clearInterval(timer);
+      timer = 0;
+    } else if (runners.some((runner) => runner.active)) {
+      schedule();
+    }
+  });
+</script>
+
+<style>
+  .pacman-divider {
+    --pacman-color: #c14e10;
+    --pacman-ghost-1: #c21300;
+    --pacman-ghost-2: #0000ee;
+    --pacman-ghost-3: #c26700;
+    --pacman-ghost-4: #c2008e;
+    margin: 0;
+    color: var(--text);
+    font: inherit;
+    line-height: 1.5;
+    white-space: pre;
+  }
+
+  :global(:root.dark) .pacman-divider {
+    --pacman-color: #ffdf00;
+    --pacman-ghost-1: #ff3b30;
+    --pacman-ghost-2: #38bdf8;
+    --pacman-ghost-3: #ffd700;
+    --pacman-ghost-4: #e879f9;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not(.light)) .pacman-divider {
+      --pacman-color: #ffdf00;
+      --pacman-ghost-1: #ff3b30;
+      --pacman-ghost-2: #38bdf8;
+      --pacman-ghost-3: #ffd700;
+      --pacman-ghost-4: #e879f9;
+    }
+  }
+</style>

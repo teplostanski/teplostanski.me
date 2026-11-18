@@ -1,36 +1,107 @@
 ---
-import { projects } from '../../data/projects'
-import { getPageCopy } from '../../i18n/pages'
-import type { Lang } from '../../i18n/utils'
-import Layout from '../../layouts/Layout.astro'
-import styles from './Projects.module.css'
+import { projectCategories } from '../../data/projects';
+import { ui } from '../../i18n/ui';
+import type { Lang } from '../../i18n/utils';
+import PacmanDivider from '../PacmanDivider.astro';
 
 interface Props {
-  lang: Lang
+  lang: Lang;
 }
 
-const { lang } = Astro.props
-const copy = getPageCopy('projects', lang)
+const { lang = 'en' } = Astro.props as Props;
+const text = ui[lang];
 ---
 
-<Layout title={copy.title} description={copy.description}>
-  <main class={styles.main}>
-    <div class={styles.content}>
-      <header class:list={[styles.header, 'fade-in-up']} style="animation-delay: 80ms">
-        <h1 class={styles.heading}>{copy.heading}</h1>
-      </header>
-      <ul class={styles.projects}>
-        {projects.map((project, index) => (
-          <li class:list={[styles.project, 'fade-in-up']} style={`animation-delay: ${160 + index * 80}ms`}>
-            <h2 class={styles.name}>
-              <a href={project.href} target="_blank" rel="noopener noreferrer" class={styles.link}>
-                {project.name}<span aria-hidden="true" class={styles.arrow}>↗</span>
+<section class="projects-content">
+  <dl class="projects-entries">
+    {projectCategories.map((category) => (
+      <div class="projects-category">
+        {category.projects.map((project) => (
+          <>
+            <dt class="projects-name">
+              <a
+                href={project.source}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {project.name}
               </a>
-            </h2>
-            <p class={styles.description}>{project.description[lang]}</p>
-          </li>
+            </dt>
+            <dd class="projects-details">
+              <p class="projects-description">{project.description[lang]}</p>
+              <p class="projects-tags">
+                {project.tags.map((tag) => (
+                  <span class="projects-tag">[{tag}]</span>
+                ))}
+              </p>
+            </dd>
+          </>
         ))}
-      </ul>
-    </div>
-  </main>
-</Layout>
+      </div>
+    ))}
+  </dl>
+  <div class="projects-divider">
+    <PacmanDivider />
+  </div>
+</section>
+
+<style>
+  .projects-entries {
+    grid-template-columns: fit-content(12rem) 1fr;
+    gap: 1rem 2rem;
+    margin-block: 0;
+    display: grid;
+  }
+
+  .projects-details,
+  .projects-description,
+  .projects-tags {
+    margin: 0;
+  }
+
+  .projects-category {
+    display: contents;
+  }
+
+  .projects-tags {
+    color: var(--text-secondary);
+    flex-wrap: wrap;
+    gap: 0 2ch;
+    display: flex;
+  }
+
+  .projects-content {
+    margin-top: 3rem;
+    width: min(100%, var(--content-width));
+  }
+
+  .projects-name {
+    font: 600 1.125rem / 1.75rem var(--font-mono);
+    color: var(--heading);
+  }
+
+  .projects-description {
+    color: var(--body-copy);
+    line-height: 1.625;
+  }
+
+  .projects-tag {
+    color: var(--muted);
+    font: 0.75rem / 1.25rem var(--font-mono);
+  }
+
+  .projects-divider {
+    margin: 3.5rem 0 1.25rem 0;
+  }
+
+  @media (width <= 35rem) {
+    .projects-entries {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+
+    .projects-name {
+      margin-top: 1.25rem;
+    }
+  }
+</style>

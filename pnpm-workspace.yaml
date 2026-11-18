@@ -1,6 +1,0 @@
-allowBuilds:
-  esbuild: false
-  sharp: false
-  workerd: false
-minimumReleaseAgeExclude:
-  - goat-counter@0.2.0

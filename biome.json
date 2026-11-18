@@ -1,29 +1,19 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.5.14/schema.json",
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["@teplostanski/biome-config/configs/base"],
   "vcs": {
     "enabled": true,
     "clientKind": "git",
     "useIgnoreFile": true
   },
   "files": {
-    "includes": [
-      "**/*.astro",
-      "**/*.js",
-      "**/*.ts",
-      "**/*.json",
-      "**/*.md",
-      "**/*.css"
-    ]
+    "includes": ["**/*.astro", "**/*.js", "**/*.ts", "**/*.json", "**/*.md", "**/*.css"]
   },
   "formatter": {
-    "enabled": true,
-    "indentStyle": "space",
-    "indentWidth": 2
+    "enabled": true
   },
   "linter": {
-    "enabled": true,
     "rules": {
-      "preset": "recommended",
       "correctness": {
         "noUnusedVariables": "off",
         "noUnusedImports": "off"
@@ -38,16 +28,6 @@
     }
   },
   "javascript": {
-    "formatter": {
-      "quoteStyle": "single",
-      "semicolons": "asNeeded"
-    }
-  },
-  "assist": {
-    "actions": {
-      "source": {
-        "organizeImports": "on"
-      }
-    }
+    "formatter": {}
   }
 }

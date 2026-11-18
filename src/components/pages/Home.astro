@@ -1,115 +1,73 @@
 ---
-import { getAuthorSchema, homeLinks } from '../../data/site'
-import { getPageCopy } from '../../i18n/pages'
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import { links } from '../../data/links'
+import { ui } from '../../i18n/ui'
 import type { Lang } from '../../i18n/utils'
-import Layout from '../../layouts/Layout.astro'
-import AboutParagraphs from '../AboutParagraphs.astro'
-import styles from './Home.module.css'
+import PacmanDivider from '../PacmanDivider.astro'
 
 interface Props {
   lang: Lang
 }
 
-const { lang } = Astro.props
-const copy = getPageCopy('home', lang)
-const aboutCopy = getPageCopy('about', lang)
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: copy.schema.name,
-  url: copy.schema.url,
-  author: getAuthorSchema(lang, {
-    includeAlternate: true,
-    includeSameAs: true,
-  }),
-}
+const { lang = 'en' } = Astro.props as Props
+const text = ui[lang]
+const projectsUrl = getRelativeLocaleUrl(lang, 'projects')
+const linksUrl = getRelativeLocaleUrl(lang, 'links')
+const githubUrl = links.find(link => link.name === 'GitHub')!.href
+const blueskyUrl = links.find(link => link.name === 'Bluesky')!.href
 ---
 
-<Layout title={copy.title} description={copy.description}>
-  <script
-    is:inline
-    slot="head"
-    type="application/ld+json"
-    set:html={JSON.stringify(schema)}
-  />
-  <main class={styles.main}>
-    <div class={styles.content}>
-      <header
-        class:list={[styles.header, 'fade-in-up']}
-        style="animation-delay: 80ms"
-      >
-        <picture class={styles.picture}>
-          <source srcset={copy.avatar.avif} type="image/avif" />
-          <img
-            src={copy.avatar.fallback}
-            alt={copy.name}
-            class={styles.avatar}
-          />
-        </picture>
+<div class="home-main">
+  <p>{text.home.greeting}</p>
+  <p>{text.home.about}</p>
 
-        <div>
-          <h1
-            class:list={[
-              styles.name,
-              copy.nameSerif && styles.serif,
-            ]}
-          >
-            {copy.name}
-          </h1>
-          <p
-            class={styles.tagline}
-            data-typewriter
-            data-text={copy.tagline}
-            data-char-delay={copy.taglineCharDelay}
-            aria-label={copy.tagline}
-          >
-          </p>
-        </div>
-      </header>
+  <div class="divider">
+    <PacmanDivider />
+  </div>
 
-      <div class={styles.sections}>
-        <section class="fade-in-up" style="animation-delay: 160ms">
-          <h2 class={styles.sectionHeading}>
-            <span
-              class={styles.prompt}
-              aria-hidden="true"
-            >$
-            </span>cat about.txt
-          </h2>
-          <div
-          class:list={[styles.about, 'fade-in-up']}
-          style="animation-delay: 160ms"
+  <nav>
+    <ul>
+      <li>
+        <a class="home-link" href={projectsUrl}>
+          {text.navigation.projects}
+        </a>
+      </li>
+      <li>
+        <a class="home-link" href={linksUrl}>
+          {text.navigation.links}
+        </a>
+      </li>
+      <li>
+        <a
+          class="home-link"
+          href={githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <AboutParagraphs paragraphs={aboutCopy.paragraphs} />
-        </div>
-        </section>
+          {text.navigation.github}
+        </a>
+      </li>
+      <li>
+        <a
+          class="home-link"
+          href={blueskyUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {text.navigation.bluesky}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
 
-        <section class="fade-in-up" style="animation-delay: 240ms">
-          <h2 class={styles.sectionHeading}>
-            <span
-              class={styles.prompt}
-              aria-hidden="true"
-            >$
-            </span>cat links.md
-          </h2>
-          <div class={styles.links}>
-            {homeLinks.links.map((link) => (
-              <a
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                class={styles.link}
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-        </section>
-      </div>
-    </div>
-  </main>
-  <script>
-  import { runTypewriter } from '../../scripts/typewriter'
-  document.addEventListener('astro:page-load', runTypewriter)
-  </script>
-</Layout>
+<style>
+  .home-main {
+    width: 100%;
+    max-width: var(--content-width);
+  }
+
+  .home-link {
+    font-weight: 700;
+  }
+</style>

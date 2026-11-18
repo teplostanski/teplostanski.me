@@ -1,7 +1,0 @@
-.projectLink {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-.projectLink:hover {
-  color: var(--accent-hover);
-}

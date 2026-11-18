@@ -1,0 +1,11 @@
+---
+import LinksPage from '../../components/pages/Links.astro'
+import { getLangFromUrl } from '../../i18n/utils'
+import Layout from '../../layouts/Layout.astro'
+
+const lang = getLangFromUrl(Astro.url)
+---
+
+<Layout lang={lang}>
+  <LinksPage lang={lang} />
+</Layout>
